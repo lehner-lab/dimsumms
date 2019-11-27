@@ -36,7 +36,7 @@ Fitness scores, pre-processed data and required miscellaneous files should be do
 
 # Running
 
-There are a number of options available for running the tardbpdms pipeline depending on user requirements.
+There are a number of options available for running the dimsumms pipeline depending on user requirements.
 
 * ## Basic (default)
 

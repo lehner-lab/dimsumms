@@ -47,16 +47,18 @@ dimsumms_error_model_performance <- function(
 	adm <- all_datasets[test_rep != "avg" & method != "MioAtrue",.(value = 2^mean((log2(sd_val)))),.(Nmut,method,dataset)]
 
 	dataset_dict <- list(
-		"TDP43_290_1234" = "TDP-43 (290-331); Bolognesi et al. 2019",
-		"TDP43_332_1234" = "TDP-43 (332-373); Bolognesi et al. 2019",
+		"TDP43_290" = "TDP-43 (290-331); Bolognesi et al. 2019",
+		"TDP43_290_134" = "TDP-43 (290-331) only reps 1,3,4",
+		"TDP43_332" = "TDP-43 (332-373); Bolognesi et al. 2019",
 		"FOSJUN" = "FOS-JUN deepPCA; Diss et al. 2018",
 		"FOScis" = "FOS deepPCA; Diss et al. 2018",
 		"GRB2_GPD_epPCR" = "GRB2 deepPCA; in prep.",
 		"GRB2_CYC_epPCR" = "GRB2 stabilityPCA; in prep.",
 		"GB1" = "GB1; Olson et al. 2014",
-		"tRNA_Li2018_s1" = "tRNA 23C; Olson et al. 2014",
-		"tRNA_Li2018_s2" = "tRNA 30C; Olson et al. 2014",
-		"tRNA_Li2018_s3" = "tRNA 37C; Olson et al. 2014")
+		"tRNA_Li2018_s23" = "tRNA 23C; Li & Zhang 2018",
+		"tRNA_Li2018_s30" = "tRNA 30C; Li & Zhang 2018",
+		"tRNA_Li2018_s37" = "tRNA 37C; Li & Zhang 2018",
+		"tRNA_Li2018_sDMSO" = "tRNA DMSO; Li & Zhang 2018")
 	adm[,dataset := unlist(dataset_dict[dataset])]
 	adm[,method := factor(method,levels=c("naive","cbe","ire","MioA","A","Mio"))]
 	levels(adm$method) <- c("s.d.-based","count-based","CB + variant corr.","DiMSum full","DiMSum rep.","DiMSum mult.")

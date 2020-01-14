@@ -97,7 +97,7 @@ dimsumms_aa_properties_mutant_effects <- function(
 			plot_colours=temp_cols, 
 			comps=1:2, 
 			plot_symbol=19,
-			width=5, height=5)
+			width=10, height=5)
 	}
 
 	### Single mutant effects on AA properties 

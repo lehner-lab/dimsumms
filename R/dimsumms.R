@@ -6,13 +6,15 @@
 #' @param startStage Start at a specified analysis stage (default:1)
 #' @param stopStage Stop at a specified analysis stage (default:0 i.e. no stop condition)
 #' @param base_dir Base directory for all output file (default:NB private CRG server path; change accordingly)
+#' @param Ncores # cores available to parallelize leave-one-out cross validation workflow (stage 4)
 #'
 #' @return Nothing
 #' @export
 dimsumms <- function(
   startStage=1,
   stopStage=0,
-  base_dir = "/users/blehner/afaure/DMS/Results/dimsumms_proj"
+  base_dir = "/users/blehner/afaure/DMS/Results/dimsumms_proj",
+  Ncores = 1
   ){
 
 	colour_scheme <- list(
@@ -70,18 +72,19 @@ dimsumms <- function(
 		colour_scheme = colour_scheme,
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
 
-	#Error model results before/after replicate error and over-sequencing factor manipulations
+	#Error model results before/after replicate error and over-sequencing factor manipulations in TDP43 290 library
 	stagenum <- 3
-	dimsumms_error_model_data_manipulations(
+	dimsumms_errormodel_data_manipulations(
 		error_model_dir = file.path(base_dir, "misc", "DiMSum_errormodel"),
-		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_error_model_data_manipulations", stagenum=stagenum, base_dir=base_dir),
+		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_errormodel_data_manipulations", stagenum=stagenum, base_dir=base_dir),
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
 
-	#Error model performance plots
+	#Error model performance in leave-one-out cross validation on published DMS datasets
 	stagenum <- 4
-	dimsumms_error_model_performance(
-		performance_dir = file.path(base_dir, "misc", "Performance"),
-		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_error_model_performance", stagenum=stagenum, base_dir=base_dir),
+	dimsumms_errormodel_leaveoneout(
+		dataset_dir = file.path(base_dir, "misc", "DiMSum_errormodel","processed_data"),
+		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_errormodel_performance", stagenum=stagenum, base_dir=base_dir),
+		Ncores=Ncores,
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
 
 }

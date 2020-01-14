@@ -64,8 +64,8 @@ This stage ('dimsumms_bottleneck_fitness_vs_hydrophobicity_scatter') produces sc
 
 This stage ('dimsumms_error_model_data_manipulations') produces plots of error model parameters before/after manipulating replicate error and over-sequencing factors for replicate 1.
 
-## Stage 4: Error model performance plots
+## Stage 4: Error model leave-one-out cross validation benchmark
 
-This stage ('dimsumms_error_model_performance') produces plots of comparative error model performance using previously published DMS datasets.
+This stage ('dimsumms_errormodel_leaveoneout') performs leave-one-out cross validation on published DMS datasets to benchmark error model performance. The preprocessed datasets are supplied with the required data .zip-file, but the preprocessing script ('dimsumms_errormodel_leaveoneout_preprocess_datasets.R') can be run separately on the raw data to reproduce the full workflow.
 
 

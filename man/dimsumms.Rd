@@ -5,7 +5,8 @@
 \title{dimsumms}
 \usage{
 dimsumms(startStage = 1, stopStage = 0,
-  base_dir = "/users/blehner/afaure/DMS/Results/dimsumms_proj")
+  base_dir = "/users/blehner/afaure/DMS/Results/dimsumms_proj",
+  Ncores = 1)
 }
 \arguments{
 \item{startStage}{Start at a specified analysis stage (default:1)}
@@ -13,6 +14,8 @@ dimsumms(startStage = 1, stopStage = 0,
 \item{stopStage}{Stop at a specified analysis stage (default:0 i.e. no stop condition)}
 
 \item{base_dir}{Base directory for all output file (default:NB private CRG server path; change accordingly)}
+
+\item{Ncores}{# cores available to parallelize leave-one-out cross validation workflow (stage 4)}
 }
 \value{
 Nothing

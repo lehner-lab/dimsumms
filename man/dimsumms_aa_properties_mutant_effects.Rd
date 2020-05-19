@@ -4,8 +4,14 @@
 \alias{dimsumms_aa_properties_mutant_effects}
 \title{dimsumms_aa_properties_mutant_effects}
 \usage{
-dimsumms_aa_properties_mutant_effects(toxicity_dt, outpath, aaprop_file,
-  aaprop_file_selected, colour_scheme, report = F)
+dimsumms_aa_properties_mutant_effects(
+  toxicity_dt,
+  outpath,
+  aaprop_file,
+  aaprop_file_selected,
+  colour_scheme,
+  report = F
+)
 }
 \arguments{
 \item{toxicity_dt}{data.table with single and double mutant codes (required)}

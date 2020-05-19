@@ -4,9 +4,16 @@
 \alias{dimsumms_errormodel_fit}
 \title{dimsumms_errormodel_fit}
 \usage{
-dimsumms_errormodel_fit(DT, reps, Ncores = 1, Nbootstraps = 100,
-  maxN = 5000, max_tries_per_fit = 20, lower_bound_add = 10^-4,
-  Fcorr = c())
+dimsumms_errormodel_fit(
+  DT,
+  reps,
+  Ncores = 1,
+  Nbootstraps = 100,
+  maxN = 10000,
+  max_tries_per_fit = 20,
+  lower_bound_add = 10^-4,
+  Fcorr = c()
+)
 }
 \arguments{
 \item{DT}{DMS dataset data.table}

@@ -20,7 +20,7 @@ dimsumms_errormodel_fit = function(
   reps,
   Ncores=1,
   Nbootstraps=100,
-  maxN = 5000,
+  maxN = 10000,
   max_tries_per_fit = 20,
   lower_bound_add = 10^-4,
   Fcorr= c()) {
@@ -30,15 +30,17 @@ dimsumms_errormodel_fit = function(
   work_data = copy(DT)
   ######## estimate replicate & over-sequencing error model
   #calcualte density of data along mean count based error (for density dependent weighting)
-  bins = 50
-  work_data[,mean_cbe := rowMeans(.SD),.SDcols = grep(paste0("^cbe[",reps,"]*$"),names(work_data))]
-  error_range = seq(work_data[input_above_threshold == T & all_reads ==T,log10(quantile(mean_cbe^2,probs=0.001))],0,length.out = bins)
-  D = density(x = work_data[input_above_threshold == T & all_reads ==T,log10(mean_cbe^2)],
-              from = work_data[,log10(quantile(mean_cbe^2,probs=0.001))],to=0,n=bins)
-  work_data[,bin_error := findInterval(mean_cbe^2,vec = 10^error_range)]
-  work_data[,bin_error_density := D$y[bin_error],bin_error]
-  work_data[bin_error == 0,bin_error_density := work_data[bin_error >0][which.min(bin_error),unique(bin_error_density)]]
+  # bins = 50
+  # work_data[,mean_cbe := rowMeans(.SD),.SDcols = grep(paste0("^cbe[",reps,"]*$"),names(work_data))]
+  # error_range = seq(work_data[input_above_threshold == T & all_reads ==T,log10(quantile(mean_cbe^2,probs=0.001))],0,length.out = bins)
+  # D = density(x = work_data[input_above_threshold == T & all_reads ==T,log10(mean_cbe^2)],
+  #             from = work_data[,log10(quantile(mean_cbe^2,probs=0.001))],to=0,n=bins)
+  # work_data[,bin_error := findInterval(mean_cbe^2,vec = 10^error_range)]
+  # work_data[,bin_error_density := D$y[bin_error],bin_error]
+  # work_data[bin_error == 0,bin_error_density := work_data[bin_error >0][which.min(bin_error),unique(bin_error_density)]]
   
+  work_data[, bin_error_density := sqrt(max(.N, sqrt(nrow(work_data)))), Nmut]
+
   #set up fitting parameters
   Nreps = nchar(reps)
   doMC::registerDoMC(cores=Ncores)

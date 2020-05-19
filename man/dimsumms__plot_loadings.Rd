@@ -4,10 +4,18 @@
 \alias{dimsumms__plot_loadings}
 \title{dimsumms__plot_loadings}
 \usage{
-dimsumms__plot_loadings(pca_obj, output_file, plot_categories,
-  plot_colours, mono_cols = c("white", "grey", "lightgrey", "darkgrey"),
-  comps = 1:5, plot_symbol = 19, points_cex = 1, width = 10,
-  height = 10)
+dimsumms__plot_loadings(
+  pca_obj,
+  output_file,
+  plot_categories,
+  plot_colours,
+  mono_cols = c("white", "grey", "lightgrey", "darkgrey"),
+  comps = 1:5,
+  plot_symbol = 19,
+  points_cex = 1,
+  width = 10,
+  height = 10
+)
 }
 \arguments{
 \item{pca_obj}{result of call to princomp (required)}

@@ -5,8 +5,10 @@
 \alias{dimsumms_errormodel_leaveoneout_preprocess_datasets}
 \title{dimsumms_errormodel_leaveoneout_preprocess_datasets}
 \usage{
-dimsumms_errormodel_leaveoneout_preprocess_datasets(dataset_dir,
-  execute = TRUE)
+dimsumms_errormodel_leaveoneout_preprocess_datasets(
+  dataset_dir,
+  execute = TRUE
+)
 }
 \arguments{
 \item{dataset_dir}{base directory with downloaded DiMSum manuscript data (folder 'misc')}

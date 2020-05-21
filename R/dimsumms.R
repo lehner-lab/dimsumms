@@ -82,7 +82,7 @@ dimsumms <- function(
 	#Error model performance in leave-one-out cross validation on published DMS datasets
 	stagenum <- 4
 	dimsumms_errormodel_leaveoneout(
-		dataset_dir = file.path(base_dir, "misc", "DiMSum_errormodel","processed_data"),
+		dataset_dir = file.path(base_dir, "misc", "DiMSum_errormodel"),
 		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_errormodel_performance", stagenum=stagenum, base_dir=base_dir),
 		Ncores=Ncores,
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))

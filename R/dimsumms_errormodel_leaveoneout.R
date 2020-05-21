@@ -26,9 +26,12 @@
     
     #Create output directory
     dimsumms__create_dir(dimsumms_dir = outpath)
-    
+  
+    #Preprocess datasets
+    dimsumms_errormodel_leaveoneout_preprocess_datasets(dataset_dir)
+
     #fetch files
-    files = list.files(file.path(dataset_dir))
+    files = list.files(file.path(dataset_dir, "processed_data"))
     dataset_label = sapply(1:length(files),function(X){strsplit(files[X],"\\.")[[1]][1]})
     
     ###############################
@@ -40,7 +43,7 @@
       print(paste0("running leave one out cross validation for ",dataset_label[dataset_idx]))
       
       #load dataset
-      work_data = fread(file.path(dataset_dir,files[dataset_idx]))
+      work_data = fread(file.path(dataset_dir, "processed_data", files[dataset_idx]))
       
       #how many replicates?
       reps = paste0(gsub("input","",grep("input",names(work_data),value=T)),collapse="")
@@ -356,34 +359,34 @@
         levels(dt_zscore_melt$variable) <- unlist(method_dict)
 
         zrange = 3.5
-        p1 <- ggplot(dt_zscore_melt, aes(sample = value, color = variable, lty = type)) +
-          geom_abline(lty = 2) + 
-          geom_qq(geom = "line") +
-          coord_cartesian(xlim = c(-zrange, zrange), ylim = c(-zrange, zrange)) +
-          labs(x = 'expected', y = 'observed', color = "error model", lty = "") +
-          theme_bw()
+        p1 <- ggplot2::ggplot(dt_zscore_melt, ggplot2::aes(sample = value, color = variable, lty = type)) +
+          ggplot2::geom_abline(lty = 2) + 
+          ggplot2::geom_qq(geom = "line") +
+          ggplot2::coord_cartesian(xlim = c(-zrange, zrange), ylim = c(-zrange, zrange)) +
+          ggplot2::labs(x = 'expected', y = 'observed', color = "error model", lty = "") +
+          ggplot2::theme_bw()
 
         dt_zscore_melt[, pvalue := 2*pnorm(-abs(value))]
 
-        p2 <- ggplot(dt_zscore_melt, aes(pvalue, color = variable, lty = type)) +
-          geom_abline(lty = 2) + 
-          stat_ecdf() +
-          scale_x_continuous(limits = c(0, 1), expand = c(0, 0.01)) +
-          scale_y_continuous(limits = c(0, 1), expand = c(0, 0.01)) +
-          labs(x = 'p value', y = 'empirical CDF', color = "error model", lty = "") +
-          theme_bw()
-        p3 <- ggplot(dt_zscore_melt, aes(pvalue, color = variable, lty = type)) +
-          geom_abline(lty = 2) + 
-          stat_ecdf() +
-          coord_cartesian(xlim = c(0, .1), ylim = c(0, .1)) +
-          scale_x_continuous(expand = c(0, 0.01)) +
-          scale_y_continuous(expand = c(0, 0.01)) +
-          labs(x = 'p value', y = 'empirical CDF', color = "error model", lty = "") +
-          theme_bw()
+        p2 <- ggplot2::ggplot(dt_zscore_melt, ggplot2::aes(pvalue, color = variable, lty = type)) +
+          ggplot2::geom_abline(lty = 2) + 
+          ggplot2::stat_ecdf() +
+          ggplot2::scale_x_continuous(limits = c(0, 1), expand = c(0, 0.01)) +
+          ggplot2::scale_y_continuous(limits = c(0, 1), expand = c(0, 0.01)) +
+          ggplot2::labs(x = 'p value', y = 'empirical CDF', color = "error model", lty = "") +
+          ggplot2::theme_bw()
+        p3 <- ggplot2::ggplot(dt_zscore_melt, ggplot2::aes(pvalue, color = variable, lty = type)) +
+          ggplot2::geom_abline(lty = 2) + 
+          ggplot2::stat_ecdf() +
+          ggplot2::coord_cartesian(xlim = c(0, .1), ylim = c(0, .1)) +
+          ggplot2::scale_x_continuous(expand = c(0, 0.01)) +
+          ggplot2::scale_y_continuous(expand = c(0, 0.01)) +
+          ggplot2::labs(x = 'p value', y = 'empirical CDF', color = "error model", lty = "") +
+          ggplot2::theme_bw()
 
-        p <- grid.arrange(p1, p2, p3,  nrow = 2)
+        p <- gridExtra::grid.arrange(p1, p2, p3,  nrow = 2)
 
-        ggsave(plot = p, file = gsub("//","/",file.path(outpath,paste0(dataset_label[dataset_idx],"_leaveoneout_pvalue.pdf"))),
+        ggplot2::ggsave(plot = p, file = gsub("//","/",file.path(outpath,paste0(dataset_label[dataset_idx],"_leaveoneout_pvalue.pdf"))),
               width = 12, height = 6)
 
       }

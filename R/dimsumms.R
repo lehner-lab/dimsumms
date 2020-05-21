@@ -87,6 +87,12 @@ dimsumms <- function(
 		Ncores=Ncores,
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
 
+	#Hierarchical abundance of DMS experiments
+	stagenum <- 5
+	dimsumms_hierarchical_abundance(
+		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_hierarchical_abundance", stagenum=stagenum, base_dir=base_dir),
+		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
+
 }
 
 

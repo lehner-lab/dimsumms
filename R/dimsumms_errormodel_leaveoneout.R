@@ -27,8 +27,8 @@
     #Create output directory
     dimsumms__create_dir(dimsumms_dir = outpath)
   
-    #Preprocess datasets
-    dimsumms_errormodel_leaveoneout_preprocess_datasets(dataset_dir)
+    # #Preprocess datasets
+    # dimsumms_errormodel_leaveoneout_preprocess_datasets(dataset_dir)
 
     #fetch files
     files = list.files(file.path(dataset_dir, "processed_data"))
@@ -496,7 +496,7 @@
       height=7)
       
     p <- ggplot2::ggplot(zscore_moments_all[!is.na(dataset)],
-         ggplot2::aes(x = variable, y = sd_value)) +
+         ggplot2::aes(x = variable, y = 1/sd_value)) +
       ggplot2::geom_boxplot(ggplot2::aes(group = variable), outlier.shape = NA) +
       ggplot2::geom_point(ggplot2::aes(color = log10(mult), shape = factor(Nreps)), 
         position = ggplot2::position_dodge(width = .6), size = 2) +

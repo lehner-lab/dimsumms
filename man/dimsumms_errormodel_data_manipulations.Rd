@@ -4,11 +4,8 @@
 \alias{dimsumms_errormodel_data_manipulations}
 \title{dimsumms_errormodel_data_manipulations}
 \usage{
-dimsumms_errormodel_data_manipulations(
-  error_model_dir,
-  outpath,
-  execute = TRUE
-)
+dimsumms_errormodel_data_manipulations(error_model_dir, outpath,
+  execute = TRUE)
 }
 \arguments{
 \item{error_model_dir}{Base directory with subfolders containing results from different DiMSum runs}

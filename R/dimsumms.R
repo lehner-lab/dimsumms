@@ -6,6 +6,7 @@
 #' @param startStage Start at a specified analysis stage (default:1)
 #' @param stopStage Stop at a specified analysis stage (default:0 i.e. no stop condition)
 #' @param base_dir Base directory for all output file (default:NB private CRG server path; change accordingly)
+#' @param rerun_raw re-run raw data preprocessing (default:F)
 #' @param Ncores # cores available to parallelize leave-one-out cross validation workflow (stage 4)
 #'
 #' @return Nothing
@@ -14,6 +15,7 @@ dimsumms <- function(
   startStage=1,
   stopStage=0,
   base_dir = "/users/blehner/afaure/DMS/Results/dimsumms_proj",
+  rerun_raw = F,
   Ncores = 1
   ){
 
@@ -85,13 +87,21 @@ dimsumms <- function(
 		dataset_dir = file.path(base_dir, "misc", "DiMSum_errormodel"),
 		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_errormodel_performance", stagenum=stagenum, base_dir=base_dir),
 		Ncores=Ncores,
-		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
+		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)),
+		rerun_raw = rerun_raw)
 
 	#Hierarchical abundance of DMS experiments
 	stagenum <- 5
 	dimsumms_hierarchical_abundance(
 		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_hierarchical_abundance", stagenum=stagenum, base_dir=base_dir),
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
+
+	#Scatterplot matrices of Input and Output sample variant counts for doubles from real DMS datasets
+	stagenum <- 6
+	dimsumms_real_bottleneck_scatterplot_matrices(
+		dataset_dir = file.path(base_dir, "misc", "DiMSum_errormodel"),
+		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_real_bottleneck_scatterplot_matrices", stagenum=stagenum, base_dir=base_dir),
+		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)) & rerun_raw)
 
 }
 

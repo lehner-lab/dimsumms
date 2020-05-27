@@ -43,8 +43,8 @@ dimsumms_errormodel_data_manipulations <- function(
 	plot_error_model[, dataset := rep(names(error_model_list), each = dim(error_model_list[[1]])[1])]
 
   #Add columns for upper/lower bounds of parameter estimates (for plotting)
-  plot_error_model[,upper := mean_value + sd_value]
-  plot_error_model[,lower := mean_value - sd_value]
+  plot_error_model[,upper := CI90_upper]
+  plot_error_model[,lower := CI90_lower]
   plot_error_model[lower < 0,lower := mean_value]
   # print(plot_error_model)
   

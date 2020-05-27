@@ -4,12 +4,8 @@
 \alias{dimsumms_errormodel_leaveoneout}
 \title{dimsumms_errormodel_leaveoneout}
 \usage{
-dimsumms_errormodel_leaveoneout(
-  dataset_dir,
-  Ncores = 1,
-  outpath,
-  execute = TRUE
-)
+dimsumms_errormodel_leaveoneout(dataset_dir, Ncores = 1, outpath,
+  rerun_raw = F, execute = TRUE)
 }
 \arguments{
 \item{dataset_dir}{directory with preprocessed DMS datasets (preprocessed by dimsumms_errormodel_leaveoneout_preprocess_datasets.R script)}
@@ -17,6 +13,8 @@ dimsumms_errormodel_leaveoneout(
 \item{Ncores}{number of cores to use to parallelize up analyes}
 
 \item{outpath}{output path for plots and saved objects (required)}
+
+\item{rerun_raw}{re-run raw data preprocessing (default:F)}
 
 \item{execute}{whether or not to execute the analysis (default: TRUE)}
 }

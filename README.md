@@ -32,7 +32,11 @@ library(dimsumms)
 
 # Required Data
 
-Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here](https://www.dropbox.com/s/jxulf54u7ug8d6d/misc.zip?dl=0) to your project directory (see 'base_dir' argument) i.e. where output files should be written, and unzipped.
+Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here]() to your project directory (see 'base_dir' argument) i.e. where output files should be written, and unzipped.
+
+# Variant Count Data
+
+If processing of variant count data is required (see 'rerun_raw' option), files should be downloaded from [here](), unzipped and saved to the Required Data directory.
 
 # Running
 
@@ -40,7 +44,7 @@ There are a number of options available for running the dimsumms pipeline depend
 
 * ## Basic (default)
 
-Default pipeline functionality uses fitness scores (see 'Required Data') to reproduce all figures in the publication. The **[DiMSum](https://github.com/lehner-lab/DiMSum)** package is not required for this default functionality.
+Default pipeline functionality uses fitness scores (see [Required Data](#required-data)) to reproduce all figures in the publication. The **[DiMSum](https://github.com/lehner-lab/DiMSum)** package is not required for this default functionality.
 
 * ## Raw read processing
 
@@ -48,9 +52,13 @@ Raw read processing is not handled by the dimsumms pipeline. FastQ files from de
 
 DiMSum command-line arguments and Experimental design files required to obtain fitness scores and variant counts from FastQ files are available [here]().
 
+* ## Variant count processing
+
+To preprocess variant count data (see [Variant Count Data](#variant-count-data)), the 'rerun_raw' option should be set to TRUE. Variant count data is optional for Stage 4 and required for Stages 6 and 7.
+
 # Pipeline
 
-The top-level function **dimsumms()** is the recommended entry point to the pipeline and reproduces the figures and results from the computational analyses described in the following publication: "DiMSum: A pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies" (Faure AJ and Schmiedel JM et al.). See section on "Required Data" above for instructions on how to obtain all required data and miscellaneous files before running the pipeline.
+The top-level function **dimsumms()** is the recommended entry point to the pipeline and reproduces the figures and results from the computational analyses described in the following publication: "DiMSum: An error model and pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies" (Faure AJ and Schmiedel JM et al.). See section on "Required Data" above for instructions on how to obtain all required data and miscellaneous files before running the pipeline.
 
 ## Stage 1: Fitness comparisons before/after bottlenecks and filtering
 
@@ -66,6 +74,6 @@ This stage ('dimsumms_error_model_data_manipulations') produces plots of error m
 
 ## Stage 4: Error model leave-one-out cross validation benchmark
 
-This stage ('dimsumms_errormodel_leaveoneout') performs leave-one-out cross validation on published DMS datasets to benchmark error model performance. The preprocessed datasets are supplied with the required data .zip-file, but the preprocessing script ('dimsumms_errormodel_leaveoneout_preprocess_datasets.R') can be run separately on the raw data to reproduce the full workflow.
+This stage ('dimsumms_errormodel_leaveoneout') performs leave-one-out cross validation on published DMS datasets to benchmark error model performance. The preprocessed datasets are supplied with the [Required Data](#required-data). To reproduce the full workflow, download the [Variant Count Data](#variant-count-data) and set the 'rerun_raw' option to TRUE.
 
 

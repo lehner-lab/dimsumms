@@ -1,11 +1,11 @@
 Package: dimsumms
 Title: Analysis scripts to reproduce the figures and results from DiMSum manuscript
-Version: 0.0.8.9000
+Version: 0.0.9.9000
 Authors@R: c(
 	person("Andre", "Faure", email = "ajfaure@gmail.com", role = c("aut", "cre")),
 	person("Pablo", "Baeza", email = "pablocenturion@gmail.com", role = "aut"),
 	person("Joern", "Schmiedel", email = "jschmiedel@gmail.com", role = "aut"))
-Description: "DiMSum: A pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies", Faure and Schmiedel et al. 2019
+Description: "DiMSum: An error model and pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies", Faure and Schmiedel et al. 2020
 Depends: R (>= 3.5.2)
 Imports:
 	Biostrings,

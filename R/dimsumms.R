@@ -55,7 +55,7 @@ dimsumms <- function(
 
 	#Load fitness data.tables
 	fitness_list <- dimsumms_prepare_all_dms_dt(
-		fitness_dir = file.path(base_dir, "misc", "DiMSum_fitness"))
+		fitness_dir = file.path(base_dir, "misc", "fitness"))
 
 	#Fitness comparisons before/after bottlenecks and filtering
 	stagenum <- 1
@@ -77,14 +77,14 @@ dimsumms <- function(
 	#Error model results before/after replicate error and over-sequencing factor manipulations in TDP43 290 library
 	stagenum <- 3
 	dimsumms_errormodel_data_manipulations(
-		error_model_dir = file.path(base_dir, "misc", "DiMSum_errormodel"),
+		error_model_dir = file.path(base_dir, "misc", "errormodel"),
 		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_errormodel_data_manipulations", stagenum=stagenum, base_dir=base_dir),
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)))
 
 	#Error model performance in leave-one-out cross validation on published DMS datasets
 	stagenum <- 4
 	dimsumms_errormodel_leaveoneout(
-		dataset_dir = file.path(base_dir, "misc", "DiMSum_errormodel"),
+		dataset_dir = file.path(base_dir, "misc"),
 		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_errormodel_performance", stagenum=stagenum, base_dir=base_dir),
 		Ncores=Ncores,
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)),
@@ -99,8 +99,14 @@ dimsumms <- function(
 	#Scatterplot matrices of Input and Output sample variant counts for doubles from real DMS datasets
 	stagenum <- 6
 	dimsumms_real_bottleneck_scatterplot_matrices(
-		dataset_dir = file.path(base_dir, "misc", "DiMSum_errormodel"),
+		dataset_dir = file.path(base_dir, "misc"),
 		outpath = dimsumms__format_dir(dir_suffix="_dimsumms_real_bottleneck_scatterplot_matrices", stagenum=stagenum, base_dir=base_dir),
+		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)) & rerun_raw)
+
+	#Bottleneck simulations
+	stagenum <- 7
+	dimsumms_bottleneck_simulations(
+		dataset_dir = file.path(base_dir, "misc"),
 		execute = (first_stage <= stagenum & (last_stage == 0 | last_stage >= stagenum)) & rerun_raw)
 
 }

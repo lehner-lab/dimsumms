@@ -76,4 +76,16 @@ This stage ('dimsumms_error_model_data_manipulations') produces plots of error m
 
 This stage ('dimsumms_errormodel_leaveoneout') performs leave-one-out cross validation on published DMS datasets to benchmark error model performance. The preprocessed datasets are supplied with the [Required Data](#required-data). To reproduce the full workflow, download the [Variant Count Data](#variant-count-data) and set the 'rerun_raw' option to TRUE.
 
+## Stage 5: Hierarchical abundance of DMS experiments
+
+This stage ('dimsumms_hierarchical_abundance') produces the cartoon in Figure 1B.
+
+## Stage 6: Scatterplot matrices of Input and Output sample variant counts for doubles from real DMS datasets
+
+This stage ('dimsumms_real_bottleneck_scatterplot_matrices') produces the scatterplots shown in Supplementary Figure 9. To run this stage, download the [Variant Count Data](#variant-count-data) and set the 'rerun_raw' option to TRUE.
+
+## Stage 7: Bottleneck simulations
+
+This stage ('dimsumms_bottleneck_simulations') simulates DNA extraction, library and replicate bottlenecks in DMS data. To run this stage, download the [Variant Count Data](#variant-count-data) and set the 'rerun_raw' option to TRUE.
+
 

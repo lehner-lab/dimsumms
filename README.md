@@ -19,7 +19,7 @@ To run the dimsumms pipeline you will need the following software and associated
 
 The following packages are optional:
 
-* **[DiMSum](https://github.com/lehner-lab/DiMSum)** (pipeline for pre-processing deep mutational scanning data i.e. FASTQ to counts)
+* **[DiMSum](https://github.com/lehner-lab/DiMSum)** (pipeline for pre-processing deep mutational scanning data)
 
 # Installation Instructions
 

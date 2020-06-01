@@ -1,8 +1,15 @@
-# Overview
+Welcome to the GitHub repository for the following publication: "DiMSum: An error model and pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies"
 
-Welcome to the GitHub repository for the following publication: "DiMSum: A pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies"
+Here you'll find an R package with all scripts to reproduce the figures and results from the computational analyses described in the paper. In addition we provide scripts and files to pre-process raw read datasets using DiMSum.
 
-Here you'll find an R package with all scripts to reproduce the figures and results from the computational analyses described in the paper.
+# Table Of Contents
+
+* **1. [Required Software](#required-software)**
+* **2. [Installation Instructions](#installation-instructions)**
+* **3. [Required Data](#required-data)**
+* **4. [Variant Count Data](#variant-count-data)**
+* **5. [Pipeline Modes](#pipeline-modes)**
+* **5. [Pipeline Stages](#pipeline-stages)**
 
 # Required Software
 
@@ -14,7 +21,7 @@ The following packages are optional:
 
 * **[DiMSum](https://github.com/lehner-lab/DiMSum)** (pipeline for pre-processing deep mutational scanning data i.e. FASTQ to counts)
 
-# Installation and loading
+# Installation Instructions
 
 Open R and enter:
 
@@ -38,7 +45,7 @@ Fitness scores, pre-processed data and required miscellaneous files should be do
 
 If processing of variant count data is required (see 'rerun_raw' option), files should be downloaded from [here](), unzipped and saved to the Required Data directory.
 
-# Running
+# Pipeline Modes
 
 There are a number of options available for running the dimsumms pipeline depending on user requirements.
 
@@ -56,7 +63,7 @@ DiMSum command-line arguments and Experimental design files required to obtain f
 
 To preprocess variant count data (see [Variant Count Data](#variant-count-data)), the 'rerun_raw' option should be set to TRUE. Variant count data is optional for Stage 4 and required for Stages 6 and 7.
 
-# Pipeline
+# Pipeline Stages
 
 The top-level function **dimsumms()** is the recommended entry point to the pipeline and reproduces the figures and results from the computational analyses described in the following publication: "DiMSum: An error model and pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies" (Faure AJ and Schmiedel JM et al.). See section on "Required Data" above for instructions on how to obtain all required data and miscellaneous files before running the pipeline.
 

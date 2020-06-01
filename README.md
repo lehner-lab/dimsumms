@@ -43,7 +43,7 @@ Fitness scores, pre-processed data and required miscellaneous files should be do
 
 # Variant Count Data
 
-If processing of variant count data is required (see 'rerun_raw' option), files should be downloaded from [here](https://www.dropbox.com/s/p6xbdh2fx3wrvao/datasets.zip?dl=0), unzipped and saved within the [Required Data](#required-data) directory.
+If processing of variant count data is required (see '_rerun_raw_' option), files should be downloaded from [here](https://www.dropbox.com/s/p6xbdh2fx3wrvao/datasets.zip?dl=0), unzipped and saved within the [Required Data](#required-data) directory.
 
 # Pipeline Modes
 
@@ -51,11 +51,11 @@ There are a number of options available for running the dimsumms pipeline depend
 
 * ## Basic (default)
 
-Default pipeline functionality (rerun_raw = F) uses fitness scores (see [Required Data](#required-data)) to reproduce all figures in the publication. The **[DiMSum](https://github.com/lehner-lab/DiMSum)** package is not required for this default functionality.
+Default pipeline functionality ('_rerun_raw_' = F) uses fitness scores (see [Required Data](#required-data)) to reproduce all figures in the publication. The **[DiMSum](https://github.com/lehner-lab/DiMSum)** package is not required for this default functionality.
 
 * ## Variant count processing
 
-To preprocess variant count data (see [Variant Count Data](#variant-count-data)), the 'rerun_raw' option should be set to TRUE (rerun_raw = T). Variant count data is optional for Stage 4 and required for Stages 6 and 7.
+To preprocess variant count data (see [Variant Count Data](#variant-count-data)), the '_rerun_raw_' option should be set to TRUE ('_rerun_raw_' = T). Variant count data is optional for Stage 4 and required for Stages 6 and 7.
 
 * ## Raw read processing
 
@@ -79,7 +79,7 @@ This stage ('dimsumms_error_model_data_manipulations') produces plots of error m
 
 ## Stage 4: Error model leave-one-out cross validation benchmark
 
-This stage ('dimsumms_errormodel_leaveoneout') performs leave-one-out cross validation on published DMS datasets to benchmark error model performance. The preprocessed datasets are supplied with the [Required Data](#required-data). To reproduce the full workflow, download the [Variant Count Data](#variant-count-data) and set the 'rerun_raw' option to TRUE.
+This stage ('dimsumms_errormodel_leaveoneout') performs leave-one-out cross validation on published DMS datasets to benchmark error model performance. The preprocessed datasets are supplied with the [Required Data](#required-data). To reproduce the full workflow, download the [Variant Count Data](#variant-count-data) and set the '_rerun_raw_' option to TRUE.
 
 ## Stage 5: Hierarchical abundance of DMS experiments
 
@@ -87,10 +87,10 @@ This stage ('dimsumms_hierarchical_abundance') produces the cartoon in Figure 1B
 
 ## Stage 6: Scatterplot matrices of Input and Output sample variant counts for doubles from real DMS datasets
 
-This stage ('dimsumms_real_bottleneck_scatterplot_matrices') produces the scatterplots shown in Supplementary Figure 9. To run this stage, download the [Variant Count Data](#variant-count-data) and set the 'rerun_raw' option to TRUE.
+This stage ('dimsumms_real_bottleneck_scatterplot_matrices') produces the scatterplots shown in Supplementary Figure 9. To run this stage, download the [Variant Count Data](#variant-count-data) and set the '_rerun_raw_' option to TRUE.
 
 ## Stage 7: Bottleneck simulations
 
-This stage ('dimsumms_bottleneck_simulations') simulates DNA extraction, library and replicate bottlenecks in DMS data. To run this stage, download the [Variant Count Data](#variant-count-data) and set the 'rerun_raw' option to TRUE.
+This stage ('dimsumms_bottleneck_simulations') simulates DNA extraction, library and replicate bottlenecks in DMS data. To run this stage, download the [Variant Count Data](#variant-count-data) and set the '_rerun_raw_' option to TRUE.
 
 

@@ -43,7 +43,7 @@ Fitness scores, pre-processed data and required miscellaneous files should be do
 
 # Variant Count Data
 
-If processing of variant count data is required (see '_rerun_raw_' option), files should be downloaded from [here](https://www.dropbox.com/s/p6xbdh2fx3wrvao/datasets.zip?dl=0), unzipped and saved within the [Required Data](#required-data) directory.
+If processing of variant count data is required ('_rerun_raw_' = T), files should be downloaded from [here](https://www.dropbox.com/s/p6xbdh2fx3wrvao/datasets.zip?dl=0), unzipped and saved within the [Required Data](#required-data) directory.
 
 # Pipeline Modes
 

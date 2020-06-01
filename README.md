@@ -39,7 +39,7 @@ library(dimsumms)
 
 # Required Data
 
-Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here](https://www.dropbox.com/s/7yf0xcxyrklor6x/misc.zip?dl=0) to your project directory (see 'base_dir' option) i.e. where output files should be written, and unzipped.
+Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here](https://www.dropbox.com/s/7yf0xcxyrklor6x/misc.zip?dl=0) to your project directory (see '_base_dir_' option) i.e. where output files should be written, and unzipped.
 
 # Variant Count Data
 

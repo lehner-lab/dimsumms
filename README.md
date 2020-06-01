@@ -15,11 +15,11 @@ Here you'll find an R package with all scripts to reproduce the figures and resu
 
 To run the dimsumms pipeline you will need the following software and associated packages:
 
-* **[R](https://www.r-project.org/) v3.5.2** (Biostrings, caTools, corpcor, cowplot, data.table, gdata, ggplot2, GGally, hexbin, lemon, optparse, parallel, pdist, plyr, ppcor, raster, reshape2, Rpdb, RColorBrewer, foreach, doMC)
+* **[_R_](https://www.r-project.org/) v3.5.2** (Biostrings, caTools, corpcor, cowplot, data.table, gdata, ggplot2, GGally, hexbin, lemon, optparse, parallel, pdist, plyr, ppcor, raster, reshape2, Rpdb, RColorBrewer, foreach, doMC)
 
 The following packages are optional:
 
-* **[DiMSum](https://github.com/lehner-lab/DiMSum)** (pipeline for pre-processing deep mutational scanning data)
+* **[_DiMSum_](https://github.com/lehner-lab/DiMSum)** (pipeline for pre-processing deep mutational scanning data)
 
 # Installation Instructions
 

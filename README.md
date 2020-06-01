@@ -9,7 +9,7 @@ Here you'll find an R package with all scripts to reproduce the figures and resu
 * **3. [Required Data](#required-data)**
 * **4. [Variant Count Data](#variant-count-data)**
 * **5. [Pipeline Modes](#pipeline-modes)**
-* **5. [Pipeline Stages](#pipeline-stages)**
+* **6. [Pipeline Stages](#pipeline-stages)**
 
 # Required Software
 
@@ -39,11 +39,11 @@ library(dimsumms)
 
 # Required Data
 
-Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here]() to your project directory (see 'base_dir' argument) i.e. where output files should be written, and unzipped.
+Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here](https://www.dropbox.com/s/7yf0xcxyrklor6x/misc.zip?dl=0) to your project directory (see 'base_dir' option) i.e. where output files should be written, and unzipped.
 
 # Variant Count Data
 
-If processing of variant count data is required (see 'rerun_raw' option), files should be downloaded from [here](), unzipped and saved within the [Required Data](#required-data) directory.
+If processing of variant count data is required (see 'rerun_raw' option), files should be downloaded from [here](https://www.dropbox.com/s/p6xbdh2fx3wrvao/datasets.zip?dl=0), unzipped and saved within the [Required Data](#required-data) directory.
 
 # Pipeline Modes
 
@@ -51,21 +51,19 @@ There are a number of options available for running the dimsumms pipeline depend
 
 * ## Basic (default)
 
-Default pipeline functionality uses fitness scores (see [Required Data](#required-data)) to reproduce all figures in the publication. The **[DiMSum](https://github.com/lehner-lab/DiMSum)** package is not required for this default functionality.
-
-* ## Raw read processing
-
-Raw read processing is not handled by the dimsumms pipeline. FastQ files from deep mutational scanning (DMS) experiments were processed using **[DiMSum](https://github.com/lehner-lab/DiMSum)** itself.
-
-DiMSum command-line arguments and Experimental design files required to obtain fitness scores and variant counts from FastQ files are available [here]().
+Default pipeline functionality (rerun_raw = F) uses fitness scores (see [Required Data](#required-data)) to reproduce all figures in the publication. The **[DiMSum](https://github.com/lehner-lab/DiMSum)** package is not required for this default functionality.
 
 * ## Variant count processing
 
-To preprocess variant count data (see [Variant Count Data](#variant-count-data)), the 'rerun_raw' option should be set to TRUE. Variant count data is optional for Stage 4 and required for Stages 6 and 7.
+To preprocess variant count data (see [Variant Count Data](#variant-count-data)), the 'rerun_raw' option should be set to TRUE (rerun_raw = T). Variant count data is optional for Stage 4 and required for Stages 6 and 7.
+
+* ## Raw read processing
+
+Raw read processing is not handled by the dimsumms pipeline. FastQ files from deep mutational scanning (DMS) experiments were processed using **[DiMSum](https://github.com/lehner-lab/DiMSum)** itself. DiMSum command-line arguments and Experimental design files required to obtain fitness scores and variant counts from FastQ files are included within the subdirectory 'inputfiles' of the [Required Data](#required-data).
 
 # Pipeline Stages
 
-The top-level function **dimsumms()** is the recommended entry point to the pipeline and reproduces the figures and results from the computational analyses described in the following publication: "DiMSum: An error model and pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies" (Faure AJ and Schmiedel JM et al.). See section on "Required Data" above for instructions on how to obtain all required data and miscellaneous files before running the pipeline.
+The top-level function **dimsumms()** is the recommended entry point to the pipeline and reproduces the figures and results from the computational analyses described in the following publication: "DiMSum: An error model and pipeline for analyzing deep mutational scanning (DMS) data and diagnosing common experimental pathologies" (Faure AJ and Schmiedel JM et al.). See see [Required Data](#required-data) for instructions on how to obtain all required data and miscellaneous files before running the pipeline.
 
 ## Stage 1: Fitness comparisons before/after bottlenecks and filtering
 

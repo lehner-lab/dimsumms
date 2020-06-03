@@ -500,7 +500,7 @@ dimsumms_errormodel_leaveoneout <- function(
     width=6,
     height=7)
     
-  p <- ggplot2::ggplot(zscore_moments_all[!is.na(dataset)],
+  p <- ggplot2::ggplot(zscore_moments_all[!is.na(dataset) & type == "leave-one-out"],
        ggplot2::aes(x = variable, y = 1/sd_value)) +
     ggplot2::geom_boxplot(ggplot2::aes(group = variable), outlier.shape = NA) +
     ggplot2::geom_point(ggplot2::aes(color = log10(mult), shape = factor(Nreps)), 

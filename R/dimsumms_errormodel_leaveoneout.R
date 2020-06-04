@@ -364,7 +364,7 @@ dimsumms_errormodel_leaveoneout <- function(
       levels(dt_zscore_melt$variable) <- unlist(method_dict)
 
       zrange = 3.5
-      p1 <- ggplot2::ggplot(dt_zscore_melt, ggplot2::aes(sample = value, color = variable, lty = type)) +
+      p1 <- ggplot2::ggplot(dt_zscore_melt[type == "leave-one-out"], ggplot2::aes(sample = value, color = variable)) +
         ggplot2::geom_abline(lty = 2) + 
         ggplot2::geom_qq(geom = "line") +
         ggplot2::coord_cartesian(xlim = c(-zrange, zrange), ylim = c(-zrange, zrange)) +
@@ -373,23 +373,15 @@ dimsumms_errormodel_leaveoneout <- function(
 
       dt_zscore_melt[, pvalue := 2*pnorm(-abs(value))]
 
-      p2 <- ggplot2::ggplot(dt_zscore_melt, ggplot2::aes(pvalue, color = variable, lty = type)) +
+      p2 <- ggplot2::ggplot(dt_zscore_melt[type == "leave-one-out"], ggplot2::aes(pvalue, color = variable)) +
         ggplot2::geom_abline(lty = 2) + 
         ggplot2::stat_ecdf() +
         ggplot2::scale_x_continuous(limits = c(0, 1), expand = c(0, 0.01)) +
         ggplot2::scale_y_continuous(limits = c(0, 1), expand = c(0, 0.01)) +
         ggplot2::labs(x = 'p value', y = 'empirical CDF', color = "error model", lty = "") +
         ggplot2::theme_bw()
-      p3 <- ggplot2::ggplot(dt_zscore_melt, ggplot2::aes(pvalue, color = variable, lty = type)) +
-        ggplot2::geom_abline(lty = 2) + 
-        ggplot2::stat_ecdf() +
-        ggplot2::coord_cartesian(xlim = c(0, .1), ylim = c(0, .1)) +
-        ggplot2::scale_x_continuous(expand = c(0, 0.01)) +
-        ggplot2::scale_y_continuous(expand = c(0, 0.01)) +
-        ggplot2::labs(x = 'p value', y = 'empirical CDF', color = "error model", lty = "") +
-        ggplot2::theme_bw()
 
-      p <- gridExtra::grid.arrange(p1, p2, p3,  nrow = 2)
+      p <- gridExtra::grid.arrange(p1, p2,  nrow = 1)
 
       ggplot2::ggsave(plot = p, file = gsub("//","/",file.path(outpath,paste0(dataset_label[dataset_idx],"_leaveoneout_pvalue.pdf"))),
             width = 12, height = 6)

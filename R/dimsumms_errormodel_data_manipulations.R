@@ -48,7 +48,7 @@ dimsumms_errormodel_data_manipulations <- function(
   plot_error_model[lower < 0,lower := mean_value]
   # print(plot_error_model)
   
-  #Plot1: input and output over-sequencing factor parameters +- sd
+  #Plot1a: input and output over-sequencing factor parameters +- sd
   a <- ggplot2::ggplot(plot_error_model[parameter %in% c("input","output") & dataset %in% c("original", "overseq03", "overseq10")],
     ggplot2::aes(x=interaction(parameter, rep), mean_value, ymin = lower, ymax = upper, color = factor(rep))) +
     ggplot2::geom_pointrange() +
@@ -57,10 +57,37 @@ dimsumms_errormodel_data_manipulations <- function(
     ggplot2::scale_y_log10() + ggplot2::theme_bw() +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
     ggplot2::labs(y = "Over-sequencing factor", x = "Replicate (input or output)") +
+    ggplot2::coord_cartesian(ylim = c(1, 20)) +
     ggplot2::facet_grid(~dataset)
-  ggplot2::ggsave(file.path(outpath, "errormodel_overseq.pdf"), a, width = 6, height = 4)
+  ggplot2::ggsave(file.path(outpath, "errormodel_overseq_mult.pdf"), a, width = 6, height = 4)
 
-  #Plot2: replicate error parameters +- sd
+  #Plot1b: replicate error parameters +- sd
+  b <- ggplot2::ggplot(plot_error_model[parameter == "reperror" & dataset %in% c("original", "overseq03", "overseq10")], 
+    ggplot2::aes(x = as.factor(rep), y = sqrt(mean_value), ymin = sqrt(lower), ymax = sqrt(upper), color = factor(rep))) +
+    ggplot2::geom_pointrange() +
+    # ggplot2::scale_y_log10(limits = c(min(plot_error_model[parameter == "reperror", sqrt(lower)]),
+    #   max(c(0.1, plot_error_model[parameter == "reperror", sqrt(upper)])))) +
+    ggplot2::scale_y_log10() + ggplot2::theme_bw() + 
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
+    ggplot2::labs(y = "Replicate error", x = "Replicate") +
+    ggplot2::coord_cartesian(ylim = c(0.01, 1)) +
+    ggplot2::facet_grid(~dataset)
+  ggplot2::ggsave(file.path(outpath, "errormodel_overseq_add.pdf"), b, width = 5, height = 4)
+
+  #Plot2a: input and output over-sequencing factor parameters +- sd
+  a <- ggplot2::ggplot(plot_error_model[parameter %in% c("input","output") & !dataset %in% c("overseq03", "overseq10")],
+    ggplot2::aes(x=interaction(parameter, rep), mean_value, ymin = lower, ymax = upper, color = factor(rep))) +
+    ggplot2::geom_pointrange() +
+    # ggplot2::scale_y_log10(limits = c(min(c(1, plot_error_model[parameter %in% c("input","output"), mean_value], plot_error_model[parameter %in% c("input", "output"), lower])),
+    #   max(c(2.5, plot_error_model[parameter %in% c("input","output"), mean_value], plot_error_model[parameter %in% c("input", "output"), upper])))) +
+    ggplot2::scale_y_log10() + ggplot2::theme_bw() +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
+    ggplot2::labs(y = "Over-sequencing factor", x = "Replicate (input or output)") +
+    ggplot2::coord_cartesian(ylim = c(1, 20)) +
+    ggplot2::facet_grid(~dataset)
+  ggplot2::ggsave(file.path(outpath, "errormodel_reperror_mult.pdf"), a, width = 6, height = 4)
+
+  #Plot2b: replicate error parameters +- sd
   b <- ggplot2::ggplot(plot_error_model[parameter == "reperror" & !dataset %in% c("overseq03", "overseq10")], 
   	ggplot2::aes(x = as.factor(rep), y = sqrt(mean_value), ymin = sqrt(lower), ymax = sqrt(upper), color = factor(rep))) +
     ggplot2::geom_pointrange() +
@@ -69,8 +96,9 @@ dimsumms_errormodel_data_manipulations <- function(
     ggplot2::scale_y_log10() + ggplot2::theme_bw() + 
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
     ggplot2::labs(y = "Replicate error", x = "Replicate") +
+    ggplot2::coord_cartesian(ylim = c(0.01, 1)) +
     ggplot2::facet_grid(~dataset)
-  ggplot2::ggsave(file.path(outpath, "errormodel_reperror.pdf"), b, width = 5, height = 4)
+  ggplot2::ggsave(file.path(outpath, "errormodel_reperror_add.pdf"), b, width = 5, height = 4)
 
 }
 

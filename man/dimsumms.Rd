@@ -4,13 +4,9 @@
 \alias{dimsumms}
 \title{dimsumms}
 \usage{
-dimsumms(
-  startStage = 1,
-  stopStage = 0,
+dimsumms(startStage = 1, stopStage = 0,
   base_dir = "/users/blehner/afaure/DMS/Results/dimsumms_proj",
-  rerun_raw = F,
-  Ncores = 1
-)
+  rerun_raw = F, Ncores = 1)
 }
 \arguments{
 \item{startStage}{Start at a specified analysis stage (default:1)}

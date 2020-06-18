@@ -4,13 +4,8 @@
 \alias{dimsumms_errormodel_leaveoneout}
 \title{dimsumms_errormodel_leaveoneout}
 \usage{
-dimsumms_errormodel_leaveoneout(
-  dataset_dir,
-  Ncores = 1,
-  outpath,
-  rerun_raw = F,
-  execute = TRUE
-)
+dimsumms_errormodel_leaveoneout(dataset_dir, Ncores = 1, outpath,
+  rerun_raw = F, execute = TRUE)
 }
 \arguments{
 \item{dataset_dir}{directory with preprocessed DMS datasets (preprocessed by dimsumms_errormodel_leaveoneout_preprocess_datasets.R script)}

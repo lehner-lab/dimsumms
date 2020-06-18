@@ -4,12 +4,8 @@
 \alias{dimsumms__create_dir}
 \title{dimsumms__create_dir}
 \usage{
-dimsumms__create_dir(
-  dimsumms_dir,
-  execute = TRUE,
-  message = NULL,
-  overwrite_dir = TRUE
-)
+dimsumms__create_dir(dimsumms_dir, execute = TRUE, message = NULL,
+  overwrite_dir = TRUE)
 }
 \arguments{
 \item{dimsumms_dir}{directory path string (required)}

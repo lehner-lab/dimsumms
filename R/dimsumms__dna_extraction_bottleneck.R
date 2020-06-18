@@ -61,12 +61,12 @@ dimsumms__dna_extraction_bottleneck <- function(
 
   New.Output.1 <- Bottlenecked.Data$output1A_e1_s1_b1_count
 
-  New.Output.1 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output1A_e1_s1_b1_count),
-                         prob = New.Output.1,
-                         replace = TRUE)
-  New.Output.1 <- factor(New.Output.1, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.1 <- as.numeric(table(New.Output.1))
+  # New.Output.1 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output1A_e1_s1_b1_count),
+  #                        prob = New.Output.1,
+  #                        replace = TRUE)
+  # New.Output.1 <- factor(New.Output.1, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.1 <- as.numeric(table(New.Output.1))
 
   New.Output.1 <- rpois(n = length(New.Output.1),
                         lambda = (New.Output.1 * Bottleneck.Factor))
@@ -79,12 +79,12 @@ dimsumms__dna_extraction_bottleneck <- function(
 
   New.Output.2 <- Bottlenecked.Data$output2A_e2_s1_b1_count
 
-  New.Output.2 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output2A_e2_s1_b1_count),
-                         prob = New.Output.2,
-                         replace = TRUE)
-  New.Output.2 <- factor(New.Output.2, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.2 <- as.numeric(table(New.Output.2))
+  # New.Output.2 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output2A_e2_s1_b1_count),
+  #                        prob = New.Output.2,
+  #                        replace = TRUE)
+  # New.Output.2 <- factor(New.Output.2, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.2 <- as.numeric(table(New.Output.2))
 
   New.Output.2 <- rpois(n = length(New.Output.2),
                         lambda = (New.Output.2 * Bottleneck.Factor))
@@ -99,12 +99,12 @@ dimsumms__dna_extraction_bottleneck <- function(
   New.Output.3 <- Bottlenecked.Data$output3A_e3_s1_b1_count
 
 
-  New.Output.3 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output3A_e3_s1_b1_count),
-                         prob = New.Output.3,
-                         replace = TRUE)
-  New.Output.3 <- factor(New.Output.3, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.3 <- as.numeric(table(New.Output.3))
+  # New.Output.3 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output3A_e3_s1_b1_count),
+  #                        prob = New.Output.3,
+  #                        replace = TRUE)
+  # New.Output.3 <- factor(New.Output.3, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.3 <- as.numeric(table(New.Output.3))
 
   New.Output.3 <- rpois(n = length(New.Output.3),
                         lambda = (New.Output.3 * Bottleneck.Factor))
@@ -118,12 +118,12 @@ dimsumms__dna_extraction_bottleneck <- function(
 
   New.Output.4 <- Bottlenecked.Data$output4A_e4_s1_b1_count
 
-  New.Output.4 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output4A_e4_s1_b1_count),
-                         prob = New.Output.4,
-                         replace = TRUE)
-  New.Output.4 <- factor(New.Output.4, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.4 <- as.numeric(table(New.Output.4))
+  # New.Output.4 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output4A_e4_s1_b1_count),
+  #                        prob = New.Output.4,
+  #                        replace = TRUE)
+  # New.Output.4 <- factor(New.Output.4, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.4 <- as.numeric(table(New.Output.4))
 
   New.Output.4 <- rpois(n = length(New.Output.4),
                         lambda = (New.Output.4 * Bottleneck.Factor))
@@ -147,12 +147,12 @@ dimsumms__dna_extraction_bottleneck <- function(
 
   New.Output.1 <- Bottlenecked.Data$output1B_e1_s1_b2_count
 
-  New.Output.1 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output1B_e1_s1_b2_count),
-                         prob = New.Output.1,
-                         replace = TRUE)
-  New.Output.1 <- factor(New.Output.1, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.1 <- as.numeric(table(New.Output.1))
+  # New.Output.1 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output1B_e1_s1_b2_count),
+  #                        prob = New.Output.1,
+  #                        replace = TRUE)
+  # New.Output.1 <- factor(New.Output.1, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.1 <- as.numeric(table(New.Output.1))
 
   New.Output.1 <- rpois(n = length(New.Output.1),
                         lambda = (New.Output.1 * Bottleneck.Factor))
@@ -166,12 +166,12 @@ dimsumms__dna_extraction_bottleneck <- function(
 
   New.Output.2 <- Bottlenecked.Data$output2B_e2_s1_b2_count
 
-  New.Output.2 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output2B_e2_s1_b2_count),
-                         prob = New.Output.2,
-                         replace = TRUE)
-  New.Output.2 <- factor(New.Output.2, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.2 <- as.numeric(table(New.Output.2))
+  # New.Output.2 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output2B_e2_s1_b2_count),
+  #                        prob = New.Output.2,
+  #                        replace = TRUE)
+  # New.Output.2 <- factor(New.Output.2, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.2 <- as.numeric(table(New.Output.2))
 
   New.Output.2 <- rpois(n = length(New.Output.2),
                         lambda = (New.Output.2 * Bottleneck.Factor))
@@ -185,12 +185,12 @@ dimsumms__dna_extraction_bottleneck <- function(
 
   New.Output.3 <- Bottlenecked.Data$output3B_e3_s1_b2_count
 
-  New.Output.3 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output3B_e3_s1_b2_count),
-                         prob = New.Output.3,
-                         replace = TRUE)
-  New.Output.3 <- factor(New.Output.3, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.3 <- as.numeric(table(New.Output.3))
+  # New.Output.3 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output3B_e3_s1_b2_count),
+  #                        prob = New.Output.3,
+  #                        replace = TRUE)
+  # New.Output.3 <- factor(New.Output.3, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.3 <- as.numeric(table(New.Output.3))
 
   New.Output.3 <- rpois(n = length(New.Output.3),
                         lambda = (New.Output.3 * Bottleneck.Factor))
@@ -204,12 +204,12 @@ dimsumms__dna_extraction_bottleneck <- function(
 
   New.Output.4 <- Bottlenecked.Data$output4B_e4_s1_b2_count
 
-  New.Output.4 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output4B_e4_s1_b2_count),
-                         prob = New.Output.4,
-                         replace = TRUE)
-  New.Output.4 <- factor(New.Output.4, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.4 <- as.numeric(table(New.Output.4))
+  # New.Output.4 <- sample(x = 1:nrow(Bottlenecked.Data),
+  #                        size = sum(Bottlenecked.Data$output4B_e4_s1_b2_count),
+  #                        prob = New.Output.4,
+  #                        replace = TRUE)
+  # New.Output.4 <- factor(New.Output.4, levels = 1:nrow(Bottlenecked.Data))
+  # New.Output.4 <- as.numeric(table(New.Output.4))
 
   New.Output.4 <- rpois(n = length(New.Output.4),
                         lambda = (New.Output.4 * Bottleneck.Factor))

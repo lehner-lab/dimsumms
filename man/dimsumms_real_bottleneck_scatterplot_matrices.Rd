@@ -4,8 +4,11 @@
 \alias{dimsumms_real_bottleneck_scatterplot_matrices}
 \title{dimsumms_real_bottleneck_scatterplot_matrices}
 \usage{
-dimsumms_real_bottleneck_scatterplot_matrices(dataset_dir, outpath,
-  execute = TRUE)
+dimsumms_real_bottleneck_scatterplot_matrices(
+  dataset_dir,
+  outpath,
+  execute = TRUE
+)
 }
 \arguments{
 \item{dataset_dir}{directory with preprocessed DMS datasets (preprocessed by dimsumms_errormodel_leaveoneout_preprocess_datasets.R script)}

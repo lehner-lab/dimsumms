@@ -18,141 +18,120 @@ dimsumms__library_bottleneck <- function(
   Sequencing.Error=0.02
   ){
 
-  # load("/users/project/prj004631/afaure/DMS/dimsumrun_BB_TARDBP_290/BB_TARDBP_290_2017-06-13/BB_TARDBP_290_2017-06-13_variant_data_merge.RData")
 
   Bottlenecked.Data <- as.data.frame(fread(input_file))
 
   # subsample input 1 and use that as the "real library
-  # New.Library <- floor(Bottlenecked.Data$input1_e1_s0_bNA_count * Bottleneck.Factor)
-  New.Library <- rpois(n = length(Bottlenecked.Data$input1_e1_s0_bNA_count),
-                       lambda = Bottlenecked.Data$input1_e1_s0_bNA_count * Bottleneck.Factor)
+  New.Library.freq <- rpois(n = length(Bottlenecked.Data$input1_e1_s0_bNA_count),
+                       lambda = Bottlenecked.Data$input1_e1_s0_bNA_count * Bottleneck.Factor) / Bottlenecked.Data$input1_e1_s0_bNA_count
+  
+  New.Library.freq[is.na(New.Library.freq)] <- 0
 
   set.seed(123)
+  ### Input
   New.Input.1 <- sample(x = 1:length(New.Library),
                         size = sum(Bottlenecked.Data$input1_e1_s0_bNA_count),
-                        prob = New.Library,
+                        prob = Bottlenecked.Data$input1_e1_s0_bNA_count * New.Library.freq,
                         replace = TRUE)
   New.Input.1 <- factor(New.Input.1, levels = 1:length(New.Library))
   New.Input.1 <- as.numeric(table(New.Input.1))
 
   New.Input.2 <- sample(x = 1:length(New.Library),
                         size = sum(Bottlenecked.Data$input2_e2_s0_bNA_count),
-                        prob = New.Library,
+                        prob = Bottlenecked.Data$input2_e2_s0_bNA_count * New.Library.freq,
                         replace = TRUE)
   New.Input.2 <- factor(New.Input.2, levels = 1:length(New.Library))
   New.Input.2 <- as.numeric(table(New.Input.2))
 
   New.Input.3 <- sample(x = 1:length(New.Library),
                         size = sum(Bottlenecked.Data$input3_e3_s0_bNA_count),
-                        prob = New.Library,
+                        prob = Bottlenecked.Data$input3_e3_s0_bNA_count * New.Library.freq,
                         replace = TRUE)
   New.Input.3 <- factor(New.Input.3, levels = 1:length(New.Library))
   New.Input.3 <- as.numeric(table(New.Input.3))
 
   New.Input.4 <- sample(x = 1:length(New.Library),
                         size = sum(Bottlenecked.Data$input4_e4_s0_bNA_count),
-                        prob = New.Library,
+                        prob = Bottlenecked.Data$input4_e4_s0_bNA_count * New.Library.freq,
                         replace = TRUE)
   New.Input.4 <- factor(New.Input.4, levels = 1:length(New.Library))
   New.Input.4 <- as.numeric(table(New.Input.4))
 
-  New.Output.1 <- Bottlenecked.Data$output1A_e1_s1_b1_count
-  New.Output.1[which(New.Input.1 == 0)] <- 0
 
-  New.Output.1 <- sample(x = 1:nrow(Bottlenecked.Data),
+  ### Output
+  New.Output.1A <- sample(x = 1:nrow(Bottlenecked.Data),
                          size = sum(Bottlenecked.Data$output1A_e1_s1_b1_count),
-                         prob = New.Output.1,
+                         prob = Bottlenecked.Data$output1A_e1_s1_b1_count * New.Library.freq,
                          replace = TRUE)
-  New.Output.1 <- factor(New.Output.1, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.1 <- as.numeric(table(New.Output.1))
+  New.Output.1A <- factor(New.Output.1A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.1A <- as.numeric(table(New.Output.1A))
 
-  New.Output.2 <- Bottlenecked.Data$output2A_e2_s1_b1_count
-  New.Output.2[which(New.Input.2 == 0)] <- 0
+  New.Output.1B <- sample(x = 1:nrow(Bottlenecked.Data),
+                         size = sum(Bottlenecked.Data$output1B_e1_s1_b1_count),
+                         prob = Bottlenecked.Data$output1B_e1_s1_b1_count * New.Library.freq,
+                         replace = TRUE)
+  New.Output.1B <- factor(New.Output.1B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.1B <- as.numeric(table(New.Output.1B))
 
-  New.Output.2 <- sample(x = 1:nrow(Bottlenecked.Data),
+
+  New.Output.2A <- sample(x = 1:nrow(Bottlenecked.Data),
                          size = sum(Bottlenecked.Data$output2A_e2_s1_b1_count),
-                         prob = New.Output.2,
+                         prob = Bottlenecked.Data$output2A_e2_s1_b1_count * New.Library.freq,
                          replace = TRUE)
-  New.Output.2 <- factor(New.Output.2, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.2 <- as.numeric(table(New.Output.2))
+  New.Output.2A <- factor(New.Output.2A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.2A <- as.numeric(table(New.Output.2A))
+
+  New.Output.2B <- sample(x = 1:nrow(Bottlenecked.Data),
+                         size = sum(Bottlenecked.Data$output2B_e2_s1_b1_count),
+                         prob = Bottlenecked.Data$output2B_e2_s1_b1_count * New.Library.freq,
+                         replace = TRUE)
+  New.Output.2B <- factor(New.Output.2B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.2B <- as.numeric(table(New.Output.2B))
 
 
-  New.Output.3 <- Bottlenecked.Data$output3A_e3_s1_b1_count
-  New.Output.3[which(New.Input.3 == 0)] <- 0
-
-  New.Output.3 <- sample(x = 1:nrow(Bottlenecked.Data),
+  New.Output.3A <- sample(x = 1:nrow(Bottlenecked.Data),
                          size = sum(Bottlenecked.Data$output3A_e3_s1_b1_count),
-                         prob = New.Output.3,
+                         prob = Bottlenecked.Data$output3A_e3_s1_b1_count * New.Library.freq,
                          replace = TRUE)
-  New.Output.3 <- factor(New.Output.3, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.3 <- as.numeric(table(New.Output.3))
+  New.Output.3A <- factor(New.Output.3A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.3A <- as.numeric(table(New.Output.3A))
 
-  New.Output.4 <- Bottlenecked.Data$output4A_e4_s1_b1_count
-  New.Output.4[which(New.Input.4 == 0)] <- 0
+  New.Output.3B <- sample(x = 1:nrow(Bottlenecked.Data),
+                         size = sum(Bottlenecked.Data$output3B_e3_s1_b1_count),
+                         prob = Bottlenecked.Data$output3B_e3_s1_b1_count * New.Library.freq,
+                         replace = TRUE)
+  New.Output.3B <- factor(New.Output.3B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.3B <- as.numeric(table(New.Output.3B))
 
-  New.Output.4 <- sample(x = 1:nrow(Bottlenecked.Data),
+
+  New.Output.4A <- sample(x = 1:nrow(Bottlenecked.Data),
                          size = sum(Bottlenecked.Data$output4A_e4_s1_b1_count),
-                         prob = New.Output.4,
+                         prob = Bottlenecked.Data$output4A_e4_s1_b1_count * New.Library.freq,
                          replace = TRUE)
-  New.Output.4 <- factor(New.Output.4, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.4 <- as.numeric(table(New.Output.4))
+  New.Output.4A <- factor(New.Output.4A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.4A <- as.numeric(table(New.Output.4A))
+
+  New.Output.4B <- sample(x = 1:nrow(Bottlenecked.Data),
+                         size = sum(Bottlenecked.Data$output4A_e4_s1_b1_count),
+                         prob = Bottlenecked.Data$output4A_e4_s1_b1_count * New.Library.freq,
+                         replace = TRUE)
+  New.Output.4B <- factor(New.Output.4B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.4B <- as.numeric(table(New.Output.4B))
 
   Bottlenecked.Data$input1_e1_s0_bNA_count <- New.Input.1
   Bottlenecked.Data$input2_e2_s0_bNA_count <- New.Input.2
   Bottlenecked.Data$input3_e3_s0_bNA_count <- New.Input.3
   Bottlenecked.Data$input4_e4_s0_bNA_count <- New.Input.4
 
-  Bottlenecked.Data$output1A_e1_s1_b1_count <- New.Output.1
-  Bottlenecked.Data$output2A_e2_s1_b1_count <- New.Output.2
-  Bottlenecked.Data$output3A_e3_s1_b1_count <- New.Output.3
-  Bottlenecked.Data$output4A_e4_s1_b1_count <- New.Output.4
+  Bottlenecked.Data$output1A_e1_s1_b1_count <- New.Output.1A
+  Bottlenecked.Data$output2A_e2_s1_b1_count <- New.Output.2A
+  Bottlenecked.Data$output3A_e3_s1_b1_count <- New.Output.3A
+  Bottlenecked.Data$output4A_e4_s1_b1_count <- New.Output.4A
 
-  New.Output.1 <- Bottlenecked.Data$output1B_e1_s1_b2_count
-  New.Output.1[which(New.Input.1 == 0)] <- 0
-
-  New.Output.1 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output1B_e1_s1_b2_count),
-                         prob = New.Output.1,
-                         replace = TRUE)
-  New.Output.1 <- factor(New.Output.1, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.1 <- as.numeric(table(New.Output.1))
-
-  New.Output.2 <- Bottlenecked.Data$output2B_e2_s1_b2_count
-  New.Output.2[which(New.Input.2 == 0)] <- 0
-
-  New.Output.2 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output2B_e2_s1_b2_count),
-                         prob = New.Output.2,
-                         replace = TRUE)
-  New.Output.2 <- factor(New.Output.2, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.2 <- as.numeric(table(New.Output.2))
-
-  New.Output.3 <- Bottlenecked.Data$output3B_e3_s1_b2_count
-  New.Output.3[which(New.Input.3 == 0)] <- 0
-
-  New.Output.3 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output3B_e3_s1_b2_count),
-                         prob = New.Output.3,
-                         replace = TRUE)
-  New.Output.3 <- factor(New.Output.3, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.3 <- as.numeric(table(New.Output.3))
-
-
-
-  New.Output.4 <- Bottlenecked.Data$output4B_e4_s1_b2_count
-  New.Output.4[which(New.Input.4 == 0)] <- 0
-
-  New.Output.4 <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output4B_e4_s1_b2_count),
-                         prob = New.Output.4,
-                         replace = TRUE)
-  New.Output.4 <- factor(New.Output.4, levels = 1:nrow(Bottlenecked.Data))
-  New.Output.4 <- as.numeric(table(New.Output.4))
-
-  Bottlenecked.Data$output1B_e1_s1_b2_count <- New.Output.1
-  Bottlenecked.Data$output2B_e2_s1_b2_count <- New.Output.2
-  Bottlenecked.Data$output3B_e3_s1_b2_count <- New.Output.3
-  Bottlenecked.Data$output4B_e4_s1_b2_count <- New.Output.4
+  Bottlenecked.Data$output1B_e1_s1_b2_count <- New.Output.1B
+  Bottlenecked.Data$output2B_e2_s1_b2_count <- New.Output.2B
+  Bottlenecked.Data$output3B_e3_s1_b2_count <- New.Output.3B
+  Bottlenecked.Data$output4B_e4_s1_b2_count <- New.Output.4B
 
   Idx.WT <- which(Bottlenecked.Data$Nham_nt == 0)
   Idx.Singles <- which(Bottlenecked.Data$Nham_nt == 1)

@@ -4,8 +4,11 @@
 \alias{dimsumms__aa_properties_pca_singles_loadings}
 \title{dimsumms__aa_properties_pca_singles_loadings}
 \usage{
-dimsumms__aa_properties_pca_singles_loadings(input_dt, aa_properties_file,
-  selected_identifiers = NULL)
+dimsumms__aa_properties_pca_singles_loadings(
+  input_dt,
+  aa_properties_file,
+  selected_identifiers = NULL
+)
 }
 \arguments{
 \item{input_dt}{data.table with double mutant codes (required)}

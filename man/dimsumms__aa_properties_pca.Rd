@@ -4,9 +4,12 @@
 \alias{dimsumms__aa_properties_pca}
 \title{dimsumms__aa_properties_pca}
 \usage{
-dimsumms__aa_properties_pca(aa_properties_file,
-  selected_identifiers = NULL, return_evidences = F,
-  return_matrix_only = F)
+dimsumms__aa_properties_pca(
+  aa_properties_file,
+  selected_identifiers = NULL,
+  return_evidences = F,
+  return_matrix_only = F
+)
 }
 \arguments{
 \item{aa_properties_file}{path to amino acid properties file (required)}

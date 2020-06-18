@@ -26,6 +26,7 @@ dimsumms_bottleneck_simulations <- function(
   variant_data_merge <- variant_data_merge[apply(variant_data_merge[,.SD,.SDcols = names(variant_data_merge)[grep("_count$", names(variant_data_merge))]], 1, sum)!=0,]
   variant_data_merge <- variant_data_merge[,.SD,,.SDcols = grep("nt_seq|_count$", names(variant_data_merge))]
   names(variant_data_merge) <- sapply(strsplit(names(variant_data_merge), "_e"), '[', 1)
+  
   write.table(variant_data_merge, file = file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_NoBottleneck_t0_variant_data_merge.tsv"), sep = "\t", quote = F, row.names = F)
 
   #Simulate DNA extraction bottleneck

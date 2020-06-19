@@ -5,14 +5,9 @@
 \alias{dimsumms_bottleneck_fitness_vs_hydrophobicity_scatter}
 \title{dimsumms_bottleneck_fitness_vs_hydrophobicity_scatter}
 \usage{
-dimsumms_bottleneck_fitness_vs_hydrophobicity_scatter(
-  fitness_list,
-  outpath,
-  aaprop_file,
-  aaprop_file_selected,
-  colour_scheme,
-  execute = TRUE
-)
+dimsumms_bottleneck_fitness_vs_hydrophobicity_scatter(fitness_list,
+  outpath, aaprop_file, aaprop_file_selected, colour_scheme,
+  execute = TRUE)
 }
 \arguments{
 \item{fitness_list}{list of data.tables (required)}

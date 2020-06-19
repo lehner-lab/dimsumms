@@ -4,7 +4,8 @@
 \alias{dimsumms_bottleneck_fitness_scatter}
 \title{dimsumms_bottleneck_fitness_scatter}
 \usage{
-dimsumms_bottleneck_fitness_scatter(fitness_list, outpath, execute = TRUE)
+dimsumms_bottleneck_fitness_scatter(fitness_list, outpath,
+  execute = TRUE)
 }
 \arguments{
 \item{fitness_list}{list of data.tables (required)}

@@ -1,6 +1,6 @@
 Package: dimsumms
 Title: Analysis scripts to reproduce the figures and results from DiMSum manuscript
-Version: 0.0.12.9000
+Version: 0.0.14.9000
 Authors@R: c(
 	person("Andre", "Faure", email = "ajfaure@gmail.com", role = c("aut", "cre")),
 	person("Pablo", "Baeza", email = "pablocenturion@gmail.com", role = "aut"),

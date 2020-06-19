@@ -7,7 +7,7 @@
 dimsumms__dna_extraction_bottleneck(
   input_file,
   outpath,
-  bottleneck.alpha = 0.01,
+  bottleneck.alpha,
   Sequencing.Error = 0.02
 )
 }
@@ -16,7 +16,7 @@ dimsumms__dna_extraction_bottleneck(
 
 \item{outpath}{output path for plots and saved objects (required)}
 
-\item{bottleneck.alpha}{bottleneck factor (default:0.01)}
+\item{bottleneck.alpha}{bottleneck factor}
 
 \item{Sequencing.Error}{sequencing error (default:0.02)}
 }

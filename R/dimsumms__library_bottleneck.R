@@ -5,7 +5,7 @@
 #'
 #' @param input_file path to input file (required)
 #' @param outpath output path for plots and saved objects (required)
-#' @param bottleneck.alpha bottleneck factor (default:0.01)
+#' @param bottleneck.alpha bottleneck factor
 #' @param Sequencing.Error sequencing error (default:0.02)
 #'
 #' @return Nothing
@@ -14,7 +14,7 @@
 dimsumms__library_bottleneck <- function(
   input_file,
   outpath,
-  bottleneck.alpha = 0.01,
+  bottleneck.alpha,
   Sequencing.Error = 0.02
   ){
 

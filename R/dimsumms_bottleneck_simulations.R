@@ -4,6 +4,7 @@
 #' Simulate bottlenecks
 #'
 #' @param dataset_dir directory with pre-processed DMS data
+#' @param bottleneck.alpha restriction of variant pool size due to bottleneck (default:0.03)
 #' @param execute whether or not to execute the analysis (default: TRUE)
 #'
 #' @return Nothing
@@ -11,6 +12,7 @@
 #' @import data.table
 dimsumms_bottleneck_simulations <- function(
   dataset_dir,
+  bottleneck.alpha = 0.03,
   execute = TRUE
 ){
   #Return if analysis not executed
@@ -32,17 +34,20 @@ dimsumms_bottleneck_simulations <- function(
   #Simulate DNA extraction bottleneck
   dimsumms__dna_extraction_bottleneck(
     input_file = file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_variant_data_merge.tsv"),
-    outpath = file.path(dataset_dir, "datasets"))
+    outpath = file.path(dataset_dir, "datasets"),
+    bottleneck.alpha = bottleneck.alpha)
 
   #Simulate library bottleneck
   dimsumms__library_bottleneck(
     input_file = file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_variant_data_merge.tsv"),
-    outpath = file.path(dataset_dir, "datasets"))
+    outpath = file.path(dataset_dir, "datasets"),
+    bottleneck.alpha = bottleneck.alpha)
 
   #Simulate replicate bottleneck
   dimsumms__replicate_bottleneck(
     input_file = file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_variant_data_merge.tsv"),
-    outpath = file.path(dataset_dir, "datasets"))
+    outpath = file.path(dataset_dir, "datasets"),
+    bottleneck.alpha = bottleneck.alpha)
 
   #Over-sequencing factor manipulations
   variant_data_merge <- fread(file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_NoBottleneck_t0_variant_data_merge.tsv"))

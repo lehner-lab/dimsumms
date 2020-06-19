@@ -425,11 +425,13 @@ dimsumms_errormodel_leaveoneout <- function(
         Nmut = "all",
         mult = mean(error_model[rep == "average" & parameter %in% c("input", "output"), mean_value]),
         sd_value = sd(value),
+        inverse_sd = 1/sd(value),
         q_value = diff(quantile(value, probs = c(0.159, 0.841)))/2), 
       .(variable, type)],
       dt_zscore_melt[between(Nmut, 1, 2),.(dataset = dataset_label[i], 
         mult = mean(error_model[rep == "average" & parameter %in% c("input", "output"), mean_value]),
         sd_value = sd(value),
+        inverse_sd = 1/sd(value),
         q_value = diff(quantile(value, probs = c(0.159, 0.841)))/2), 
       .(variable, type, Nmut)])
 
@@ -475,6 +477,10 @@ dimsumms_errormodel_leaveoneout <- function(
 
   zscore_moments_all[,Nmut := factor(Nmut, levels=c("1", "2", "all"))]
   levels(zscore_moments_all$Nmut) <- c("single mutants", "double mutants", "all variants")
+
+  write.table(zscore_moments_all, 
+    file = gsub("//","/",file.path(outpath,"errormodel_leaveoneout_aggregated_results.txt")),
+    quote = F, row.names = F, sep = "\t")
 
   p <- ggplot2::ggplot(zscore_moments_all[Nmut=="all variants" & !is.na(dataset) & type == "leave-one-out"],
     ggplot2::aes(x = variable, y = 1/sd_value)) +

@@ -4,10 +4,16 @@
 \alias{dimsumms_bottleneck_simulations}
 \title{dimsumms_bottleneck_simulations}
 \usage{
-dimsumms_bottleneck_simulations(dataset_dir, execute = TRUE)
+dimsumms_bottleneck_simulations(
+  dataset_dir,
+  bottleneck.alpha = 0.03,
+  execute = TRUE
+)
 }
 \arguments{
 \item{dataset_dir}{directory with pre-processed DMS data}
+
+\item{bottleneck.alpha}{restriction of variant pool size due to bottleneck (default:0.03)}
 
 \item{execute}{whether or not to execute the analysis (default: TRUE)}
 }

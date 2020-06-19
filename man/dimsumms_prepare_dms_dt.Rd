@@ -7,7 +7,7 @@
 dimsumms_prepare_dms_dt(fitness_list)
 }
 \arguments{
-\item{file_path}{named list of folder paths with fitness estimates (required)}
+\item{fitness_list}{named list of folder paths with fitness estimates (required)}
 }
 \value{
 Data.table with fitness estimates

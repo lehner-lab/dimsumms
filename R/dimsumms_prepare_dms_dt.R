@@ -3,7 +3,7 @@
 #'
 #' Load and reformat fitness data.table.
 #'
-#' @param file_path named list of folder paths with fitness estimates (required)
+#' @param fitness_list named list of folder paths with fitness estimates (required)
 #'
 #' @return Data.table with fitness estimates
 #' @export

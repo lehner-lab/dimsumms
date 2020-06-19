@@ -17,9 +17,9 @@ dimsumms_prepare_all_dms_dt <- function(
 
 	dataset_names <- list(
 		"NoBottleneck" = "none",
-		"LibraryBottleneck_01" = "library",
-		"ReplicateBottleneck_01" = "replicate",
-		"DnaExtractionBottleneck_01" = "extraction")
+		"LibraryBottleneck_03" = "library",
+		"ReplicateBottleneck_03" = "replicate",
+		"DnaExtractionBottleneck_03" = "extraction")
 
 	dt_list <- list()
 	for(i in names(dataset_names)){

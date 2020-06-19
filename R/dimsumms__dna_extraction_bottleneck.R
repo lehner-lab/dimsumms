@@ -14,7 +14,7 @@
 dimsumms__dna_extraction_bottleneck <- function(
   input_file,
   outpath,
-  Bottleneck.Factor=0.05,
+  Bottleneck.Factor=0.01,
   Sequencing.Error=0.02
   ){
 

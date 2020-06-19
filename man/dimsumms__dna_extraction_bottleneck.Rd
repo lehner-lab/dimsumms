@@ -5,7 +5,7 @@
 \title{dimsumms__dna_extraction_bottleneck}
 \usage{
 dimsumms__dna_extraction_bottleneck(input_file, outpath,
-  Bottleneck.Factor = 0.05, Sequencing.Error = 0.02)
+  Bottleneck.Factor = 0.01, Sequencing.Error = 0.02)
 }
 \arguments{
 \item{input_file}{path to input file (required)}

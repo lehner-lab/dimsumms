@@ -32,17 +32,20 @@ dimsumms_bottleneck_simulations <- function(
   #Simulate DNA extraction bottleneck
   dimsumms__dna_extraction_bottleneck(
     input_file = file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_variant_data_merge.tsv"),
-    outpath = file.path(dataset_dir, "datasets"))
+    outpath = file.path(dataset_dir, "datasets"),
+    Bottleneck.Factor = 0.03)
 
   #Simulate library bottleneck
   dimsumms__library_bottleneck(
     input_file = file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_variant_data_merge.tsv"),
-    outpath = file.path(dataset_dir, "datasets"))
+    outpath = file.path(dataset_dir, "datasets"),
+    Bottleneck.Factor = 0.03)
 
   #Simulate replicate bottleneck
   dimsumms__replicate_bottleneck(
     input_file = file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_variant_data_merge.tsv"),
-    outpath = file.path(dataset_dir, "datasets"))
+    outpath = file.path(dataset_dir, "datasets"),
+    Bottleneck.Factor = 0.03)
 
   #Over-sequencing factor manipulations
   variant_data_merge <- fread(file.path(dataset_dir, "datasets", "BB_TARDBP_290_2017-06-13_NoBottleneck_t0_variant_data_merge.tsv"))

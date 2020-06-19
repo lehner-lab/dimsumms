@@ -5,7 +5,7 @@
 #'
 #' @param input_file path to input file (required)
 #' @param outpath output path for plots and saved objects (required)
-#' @param Bottleneck.Factor bottleneck factor (default:0.01)
+#' @param bottleneck.alpha bottleneck factor (default:0.01)
 #' @param Sequencing.Error sequencing error (default:0.02)
 #'
 #' @return Nothing
@@ -14,133 +14,135 @@
 dimsumms__replicate_bottleneck <- function(
   input_file,
   outpath,
-  Bottleneck.Factor=0.01,
-  Sequencing.Error=0.02
+  bottleneck.alpha = 0.01,
+  Sequencing.Error = 0.02
   ){
 
-  Bottlenecked.Data <- as.data.frame(fread(input_file))
+  original.data <- as.data.frame(fread(input_file))
 
   set.seed(123)
 
   ### Input samples
-  New.Input.1 <- rpois(n = length(Bottlenecked.Data$input1_e1_s0_bNA_count),
-                       lambda = (Bottlenecked.Data$input1_e1_s0_bNA_count * Bottleneck.Factor))
+  New.Input.1 <- rpois(n = length(original.data$input1_e1_s0_bNA_count),
+                       lambda = (original.data$input1_e1_s0_bNA_count * bottleneck.alpha))
 
-  replicate1_freq <- New.Input.1 / Bottlenecked.Data$input1_e1_s0_bNA_count
-  replicate1_freq[is.na(replicate1_freq)] <- 0
+  bottleneck.factor.rep1 <- New.Input.1 / original.data$input1_e1_s0_bNA_count
+  bottleneck.factor.rep1[is.na(bottleneck.factor.rep1)] <- 0
 
-  New.Input.1 <- sample(x = 1:nrow(Bottlenecked.Data),
-                        size = sum(Bottlenecked.Data$input1_e1_s0_bNA_count),
+  New.Input.1 <- sample(x = 1:nrow(original.data),
+                        size = sum(original.data$input1_e1_s0_bNA_count),
                         prob = New.Input.1,
                         replace = TRUE)
-  New.Input.1 <- factor(New.Input.1, levels = 1:nrow(Bottlenecked.Data))
+  New.Input.1 <- factor(New.Input.1, levels = 1:nrow(original.data))
   New.Input.1 <- as.numeric(table(New.Input.1))
 
 
-  New.Input.2 <- rpois(n = length(Bottlenecked.Data$input2_e2_s0_bNA_count),
-                       lambda = (Bottlenecked.Data$input2_e2_s0_bNA_count * Bottleneck.Factor))
+  New.Input.2 <- rpois(n = length(original.data$input2_e2_s0_bNA_count),
+                       lambda = (original.data$input2_e2_s0_bNA_count * bottleneck.alpha))
 
-  replicate2_freq <- New.Input.2 / Bottlenecked.Data$input2_e2_s0_bNA_count
-  replicate2_freq[is.na(replicate2_freq)] <- 0
+  bottleneck.factor.rep2 <- New.Input.2 / original.data$input2_e2_s0_bNA_count
+  bottleneck.factor.rep2[is.na(bottleneck.factor.rep2)] <- 0
 
-  New.Input.2 <- sample(x = 1:nrow(Bottlenecked.Data),
-                        size = sum(Bottlenecked.Data$input2_e2_s0_bNA_count),
+  New.Input.2 <- sample(x = 1:nrow(original.data),
+                        size = sum(original.data$input2_e2_s0_bNA_count),
                         prob = New.Input.2,
                         replace = TRUE)
-  New.Input.2 <- factor(New.Input.2, levels = 1:nrow(Bottlenecked.Data))
+  New.Input.2 <- factor(New.Input.2, levels = 1:nrow(original.data))
   New.Input.2 <- as.numeric(table(New.Input.2))
 
 
-  New.Input.3 <- rpois(n = length(Bottlenecked.Data$input3_e3_s0_bNA_count),
-                       lambda = (Bottlenecked.Data$input3_e3_s0_bNA_count * Bottleneck.Factor))
+  New.Input.3 <- rpois(n = length(original.data$input3_e3_s0_bNA_count),
+                       lambda = (original.data$input3_e3_s0_bNA_count * bottleneck.alpha))
 
-  replicate3_freq <- New.Input.3 / Bottlenecked.Data$input3_e3_s0_bNA_count
-  replicate3_freq[is.na(replicate3_freq)] <- 0
+  bottleneck.factor.rep3 <- New.Input.3 / original.data$input3_e3_s0_bNA_count
+  bottleneck.factor.rep3[is.na(bottleneck.factor.rep3)] <- 0
 
-  New.Input.3 <- sample(x = 1:nrow(Bottlenecked.Data),
-                        size = sum(Bottlenecked.Data$input3_e3_s0_bNA_count),
+  New.Input.3 <- sample(x = 1:nrow(original.data),
+                        size = sum(original.data$input3_e3_s0_bNA_count),
                         prob = New.Input.3,
                         replace = TRUE)
-  New.Input.3 <- factor(New.Input.3, levels = 1:nrow(Bottlenecked.Data))
+  New.Input.3 <- factor(New.Input.3, levels = 1:nrow(original.data))
   New.Input.3 <- as.numeric(table(New.Input.3))
 
 
-  New.Input.4 <- rpois(n = length(Bottlenecked.Data$input4_e4_s0_bNA_count),
-                       lambda = (Bottlenecked.Data$input4_e4_s0_bNA_count * Bottleneck.Factor))
+  New.Input.4 <- rpois(n = length(original.data$input4_e4_s0_bNA_count),
+                       lambda = (original.data$input4_e4_s0_bNA_count * bottleneck.alpha))
 
-  replicate4_freq <- New.Input.4 / Bottlenecked.Data$input4_e4_s0_bNA_count
-  replicate4_freq[is.na(replicate4_freq)] <- 0
+  bottleneck.factor.rep4 <- New.Input.4 / original.data$input4_e4_s0_bNA_count
+  bottleneck.factor.rep4[is.na(bottleneck.factor.rep4)] <- 0
 
-  New.Input.4 <- sample(x = 1:nrow(Bottlenecked.Data),
-                        size = sum(Bottlenecked.Data$input4_e4_s0_bNA_count),
+  New.Input.4 <- sample(x = 1:nrow(original.data),
+                        size = sum(original.data$input4_e4_s0_bNA_count),
                         prob = New.Input.4,
                         replace = TRUE)
-  New.Input.4 <- factor(New.Input.4, levels = 1:nrow(Bottlenecked.Data))
+  New.Input.4 <- factor(New.Input.4, levels = 1:nrow(original.data))
   New.Input.4 <- as.numeric(table(New.Input.4))
 
 
 
   ### Output samples
 
-  New.Output.1A <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output1A_e1_s1_b1_count),
-                         prob = Bottlenecked.Data$output1A_e1_s1_b1_count * replicate1_freq,
+  New.Output.1A <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output1A_e1_s1_b1_count),
+                         prob = original.data$output1A_e1_s1_b1_count * bottleneck.factor.rep1,
                          replace = TRUE)
-  New.Output.1A <- factor(New.Output.1A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.1A <- factor(New.Output.1A, levels = 1:nrow(original.data))
   New.Output.1A <- as.numeric(table(New.Output.1A))
 
-  New.Output.1B <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output1B_e1_s1_b2_count),
-                         prob = Bottlenecked.Data$output1B_e1_s1_b2_count * replicate1_freq,
+  New.Output.1B <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output1B_e1_s1_b2_count),
+                         prob = original.data$output1B_e1_s1_b2_count * bottleneck.factor.rep1,
                          replace = TRUE)
-  New.Output.1B <- factor(New.Output.1B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.1B <- factor(New.Output.1B, levels = 1:nrow(original.data))
   New.Output.1B <- as.numeric(table(New.Output.1B))
 
 
-  New.Output.2A <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output2A_e2_s1_b1_count),
-                         prob = Bottlenecked.Data$output2A_e2_s1_b1_count * replicate2_freq,
+  New.Output.2A <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output2A_e2_s1_b1_count),
+                         prob = original.data$output2A_e2_s1_b1_count * bottleneck.factor.rep2,
                          replace = TRUE)
-  New.Output.2A <- factor(New.Output.2A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.2A <- factor(New.Output.2A, levels = 1:nrow(original.data))
   New.Output.2A <- as.numeric(table(New.Output.2A))
 
-  New.Output.2B <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output2B_e2_s1_b2_count),
-                         prob = Bottlenecked.Data$output2B_e2_s1_b2_count * replicate2_freq,
+  New.Output.2B <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output2B_e2_s1_b2_count),
+                         prob = original.data$output2B_e2_s1_b2_count * bottleneck.factor.rep2,
                          replace = TRUE)
-  New.Output.2B <- factor(New.Output.2B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.2B <- factor(New.Output.2B, levels = 1:nrow(original.data))
   New.Output.2B <- as.numeric(table(New.Output.2B))
 
 
-  New.Output.3A <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output3A_e3_s1_b1_count),
-                         prob = Bottlenecked.Data$output3A_e3_s1_b1_count * replicate3_freq,
+  New.Output.3A <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output3A_e3_s1_b1_count),
+                         prob = original.data$output3A_e3_s1_b1_count * bottleneck.factor.rep3,
                          replace = TRUE)
-  New.Output.3A <- factor(New.Output.3A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.3A <- factor(New.Output.3A, levels = 1:nrow(original.data))
   New.Output.3A <- as.numeric(table(New.Output.3A))
 
-  New.Output.3B <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output3B_e3_s1_b2_count),
-                         prob = Bottlenecked.Data$output3B_e3_s1_b2_count * replicate3_freq,
+  New.Output.3B <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output3B_e3_s1_b2_count),
+                         prob = original.data$output3B_e3_s1_b2_count * bottleneck.factor.rep3,
                          replace = TRUE)
-  New.Output.3B <- factor(New.Output.3B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.3B <- factor(New.Output.3B, levels = 1:nrow(original.data))
   New.Output.3B <- as.numeric(table(New.Output.3B))
 
 
-  New.Output.4A <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output4A_e4_s1_b1_count),
-                         prob = Bottlenecked.Data$output4A_e4_s1_b1_count * replicate4_freq,
+  New.Output.4A <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output4A_e4_s1_b1_count),
+                         prob = original.data$output4A_e4_s1_b1_count * bottleneck.factor.rep4,
                          replace = TRUE)
-  New.Output.4A <- factor(New.Output.4A, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.4A <- factor(New.Output.4A, levels = 1:nrow(original.data))
   New.Output.4A <- as.numeric(table(New.Output.4A))
 
-  New.Output.4B <- sample(x = 1:nrow(Bottlenecked.Data),
-                         size = sum(Bottlenecked.Data$output4B_e4_s1_b2_count),
-                         prob = Bottlenecked.Data$output4B_e4_s1_b2_count * replicate4_freq,
+  New.Output.4B <- sample(x = 1:nrow(original.data),
+                         size = sum(original.data$output4B_e4_s1_b2_count),
+                         prob = original.data$output4B_e4_s1_b2_count * bottleneck.factor.rep4,
                          replace = TRUE)
-  New.Output.4B <- factor(New.Output.4B, levels = 1:nrow(Bottlenecked.Data))
+  New.Output.4B <- factor(New.Output.4B, levels = 1:nrow(original.data))
   New.Output.4B <- as.numeric(table(New.Output.4B))
 
+
+  Bottlenecked.Data <- original.data
 
   Bottlenecked.Data$input1_e1_s0_bNA_count <- New.Input.1
   Bottlenecked.Data$input2_e2_s0_bNA_count <- New.Input.2
@@ -842,7 +844,7 @@ dimsumms__replicate_bottleneck <- function(
   names(variant_data_merge) <- sapply(strsplit(names(variant_data_merge), "_e"), '[', 1)
 
   #Save
-  OutFileName <- file.path(outpath, paste0("BB_TARDBP_290_2017-06-13_ReplicateBottleneck_", substr(as.character(Bottleneck.Factor), 3, 4), "_t0_variant_data_merge.tsv"))
+  OutFileName <- file.path(outpath, paste0("BB_TARDBP_290_2017-06-13_ReplicateBottleneck_", substr(as.character(bottleneck.alpha), 3, 4), "_t0_variant_data_merge.tsv"))
   write.table(variant_data_merge, OutFileName, sep = "\t", quote = F, row.names = F)
 
 }

@@ -7,7 +7,7 @@
 dimsumms__replicate_bottleneck(
   input_file,
   outpath,
-  Bottleneck.Factor = 0.01,
+  bottleneck.alpha = 0.01,
   Sequencing.Error = 0.02
 )
 }
@@ -16,7 +16,7 @@ dimsumms__replicate_bottleneck(
 
 \item{outpath}{output path for plots and saved objects (required)}
 
-\item{Bottleneck.Factor}{bottleneck factor (default:0.01)}
+\item{bottleneck.alpha}{bottleneck factor (default:0.01)}
 
 \item{Sequencing.Error}{sequencing error (default:0.02)}
 }

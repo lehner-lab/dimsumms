@@ -27,6 +27,8 @@ dimsumms__library_bottleneck(
 \item{Bottleneck.Factor}{bottleneck factor (default:0.01)}
 
 \item{Sequencing.Error}{sequencing error (default:0.02)}
+
+\item{bottleneck.alpha}{bottleneck factor (default:0.01)}
 }
 \value{
 Nothing

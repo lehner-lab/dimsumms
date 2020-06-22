@@ -39,11 +39,11 @@ library(dimsumms)
 
 # Required Data
 
-Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here](https://www.dropbox.com/s/7yf0xcxyrklor6x/misc.zip?dl=0) to your project directory (see '_base_dir_' option) i.e. where output files should be written, and unzipped.
+Fitness scores, pre-processed data and required miscellaneous files should be downloaded from [here](https://www.dropbox.com/s/rben1n4lo6dvr5z/misc.zip?dl=0) to your project directory (see '_base_dir_' option) i.e. where output files should be written, and unzipped.
 
 # Variant Count Data
 
-If processing of variant count data is required ('_rerun_raw_' = T), files should be downloaded from [here](https://www.dropbox.com/s/b7gtqhtya6ay9ba/datasets.zip?dl=0), unzipped and saved within the [Required Data](#required-data) directory.
+If processing of variant count data is required ('_rerun_raw_' = T), files should be downloaded from [here](https://www.dropbox.com/s/zptek6anffht1ps/datasets.zip?dl=0), unzipped and saved within the [Required Data](#required-data) directory.
 
 # Pipeline Modes
 

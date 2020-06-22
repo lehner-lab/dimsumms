@@ -4,11 +4,8 @@
 \alias{dimsumms_bottleneck_simulations}
 \title{dimsumms_bottleneck_simulations}
 \usage{
-dimsumms_bottleneck_simulations(
-  dataset_dir,
-  bottleneck.alpha = 0.03,
-  execute = TRUE
-)
+dimsumms_bottleneck_simulations(dataset_dir, bottleneck.alpha = 0.03,
+  execute = TRUE)
 }
 \arguments{
 \item{dataset_dir}{directory with pre-processed DMS data}

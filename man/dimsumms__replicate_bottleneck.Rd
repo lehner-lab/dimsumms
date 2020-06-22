@@ -4,12 +4,8 @@
 \alias{dimsumms__replicate_bottleneck}
 \title{dimsumms__replicate_bottleneck}
 \usage{
-dimsumms__replicate_bottleneck(
-  input_file,
-  outpath,
-  bottleneck.alpha,
-  Sequencing.Error = 0.02
-)
+dimsumms__replicate_bottleneck(input_file, outpath, bottleneck.alpha,
+  Sequencing.Error = 0.02)
 }
 \arguments{
 \item{input_file}{path to input file (required)}

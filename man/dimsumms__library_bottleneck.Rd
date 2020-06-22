@@ -4,12 +4,8 @@
 \alias{dimsumms__library_bottleneck}
 \title{dimsumms__library_bottleneck}
 \usage{
-dimsumms__library_bottleneck(
-  input_file,
-  outpath,
-  bottleneck.alpha,
-  Sequencing.Error = 0.02
-)
+dimsumms__library_bottleneck(input_file, outpath, bottleneck.alpha,
+  Sequencing.Error = 0.02)
 }
 \arguments{
 \item{input_file}{path to input file (required)}

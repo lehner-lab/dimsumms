@@ -861,5 +861,18 @@ dimsumms__dna_extraction_bottleneck <- function(
   OutFileName <- file.path(outpath, paste0("BB_TARDBP_290_2017-06-13_DnaExtractionBottleneck_", substr(as.character(bottleneck.alpha), 3, 4), "_t0_variant_data_merge.tsv"))
   write.table(variant_data_merge, OutFileName, sep = "\t", quote = F, row.names = F)
 
+
+  #### apply soft thresholds for DNA extraction bottleneck manually
+  variant_data_merge_st <- copy(variant_data_merge)
+  threshold <- 10
+  variant_data_merge_st[input1_e1_s0_bNA_count < threshold | (output1A_e1_s1_b1_count + output1B_e1_s1_b2_count) < threshold, input1_e1_s0_bNA_count := 0]
+  variant_data_merge_st[input2_e2_s0_bNA_count < threshold | (output2A_e2_s1_b1_count + output2B_e2_s1_b2_count) < threshold, input2_e2_s0_bNA_count := 0]
+  variant_data_merge_st[input3_e3_s0_bNA_count < threshold | (output3A_e3_s1_b1_count + output3B_e3_s1_b2_count) < threshold, input3_e3_s0_bNA_count := 0]
+  variant_data_merge_st[input4_e4_s0_bNA_count < threshold | (output4A_e4_s1_b1_count + output4B_e4_s1_b2_count) < threshold, input4_e4_s0_bNA_count := 0]
+
+  #Save
+  OutFileName <- file.path(outpath, paste0("BB_TARDBP_290_2017-06-13_DnaExtractionBottleneck_", substr(as.character(bottleneck.alpha), 3, 4), "_softthreshold_t0_variant_data_merge.tsv"))
+  write.table(variant_data_merge_st, OutFileName, sep = "\t", quote = F, row.names = F)
+
 }
 

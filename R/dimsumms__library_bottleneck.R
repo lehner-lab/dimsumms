@@ -22,8 +22,9 @@ dimsumms__library_bottleneck <- function(
   original.data <- as.data.frame(fread(input_file))
 
   # subsample input 1 and use that as the "real library
-  bottleneck.factor <- rpois(n = length(original.data$input1_e1_s0_bNA_count),
-                       lambda = original.data$input1_e1_s0_bNA_count * bottleneck.alpha) / original.data$input1_e1_s0_bNA_count
+  original.library <- (original.data$input1_e1_s0_bNA_count + original.data$input2_e2_s0_bNA_count + original.data$input3_e3_s0_bNA_count + original.data$input4_e4_s0_bNA_count) / 4
+  bottleneck.factor <- rpois(n = length(original.library),
+                       lambda = original.library * bottleneck.alpha) / original.library
   
   bottleneck.factor[is.na(bottleneck.factor)] <- 0
 
